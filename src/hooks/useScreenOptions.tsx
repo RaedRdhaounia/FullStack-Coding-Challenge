@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import { StackHeaderOptions } from '@react-navigation/stack/lib/typescript/src/types';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
-import { AddToFavouriteIcon, FavouriteIcon } from '../components/others/Icons';
+import { AddToFavouriteIcon, BackIcon, FavouriteIcon } from '../components/others/Icons';
 
 type optionT = {
   stack: NativeStackNavigationOptions;
@@ -29,15 +29,19 @@ export default () => {
     },
     details: {
       ...header,
-      headerTitle: () => <Text>favourite</Text>,
+      headerTitle: () => null,
       headerRight: ()=> <AddToFavouriteIcon/>,
+      headerLeft: () => <BackIcon color='gray'/>,
+
     },
     favourites: {
       ...header,
-      headerTitle: () => <Text>favourite</Text>,
+      headerTitle: null,
       headerRight: () => null,
+      headerLeft: () => <BackIcon color='white'/>,
+
     },
   };
 
-  return options as optionT;
+  return options as unknown as optionT;
 };
