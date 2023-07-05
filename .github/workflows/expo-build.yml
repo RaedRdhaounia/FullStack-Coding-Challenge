@@ -31,7 +31,12 @@ jobs:
           EAS_EMAIL: ${{ secrets.EAS_EMAIL }}
           EAS_PASSWORD: ${{ secrets.EAS_PASSWORD }}
         run: |
-          echo $EAS_EMAIL | eas login --stdin
-          echo $EAS_PASSWORD | eas login --stdin
+          echo "spawn eas login" > script.exp
+          echo "expect \"?Username or email address:\"" >> script.exp
+          echo "send \"$EAS_EMAIL\n\"" >> script.exp
+          echo "expect \"?Password:\"" >> script.exp
+          echo "send \"$EAS_PASSWORD\n\"" >> script.exp
+          echo "interact" >> script.exp
+          expect script.exp
       - name: Build Expo project with EAS
         run:  eas build -p android --profile preview
