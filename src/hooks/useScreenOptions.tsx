@@ -1,9 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { StackHeaderOptions } from '@react-navigation/stack/lib/typescript/src/types';
-import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
-import { HomeScreenNavigationProp } from 'constants/types/Tscreens';
 import { AddToFavouriteIcon, FavouriteIcon } from '../components/others/Icons';
 
 type optionT = {
@@ -14,7 +12,6 @@ type optionT = {
 };
 
 export default () => {
-    const navigation = useNavigation<HomeScreenNavigationProp>();
 
   const header = {
     headerTitleAlign: 'center',
@@ -27,13 +24,13 @@ export default () => {
     home: {
       ...header,
       headerTitle: () => null,
-      headerRight: FavouriteIcon,
+      headerRight: ()=> <FavouriteIcon/>,
       headerLeft: () => null,
     },
     details: {
       ...header,
       headerTitle: () => <Text>favourite</Text>,
-      headerRight: AddToFavouriteIcon,
+      headerRight: ()=> <AddToFavouriteIcon/>,
     },
     favourites: {
       ...header,

@@ -19,6 +19,6 @@ export function AddToFavouriteIcon() {
     console.log("add to favourite")
   }
   return (
-    <MaterialCommunityIcons name="heart-multiple" size={24} color="red" onPress={addToFavourite}/>
+    <MaterialCommunityIcons name="heart-plus" size={24} color="black"onPress={addToFavourite} />
   )
 }
