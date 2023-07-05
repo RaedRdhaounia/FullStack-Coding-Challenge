@@ -1,5 +1,5 @@
 import { DetailsScreenNavigationProp, DetailsScreenRouteProp } from "constants/types/Tscreens";
-import { Text, View } from "react-native";
+import { SafeAreaView, Text } from "react-native";
 
 
 interface DetailsScreenProps {
@@ -11,9 +11,9 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({ route }) => {
   const { itemId } = route.params;
 
   return (
-    <View>
+    <SafeAreaView>
       <Text>Item ID: {itemId}</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
