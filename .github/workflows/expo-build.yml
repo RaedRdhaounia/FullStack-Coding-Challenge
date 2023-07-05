@@ -40,3 +40,4 @@ jobs:
           expect script.exp
       - name: Build Expo project with EAS
         run:  eas build -p android --profile preview
+
