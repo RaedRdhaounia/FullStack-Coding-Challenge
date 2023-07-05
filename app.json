@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "FullStack-Coding-Challenge",
-    "slug": "FullStack-Coding-Challenge",
+    "slug": "fullstack-coding-challenge",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.raedrdhaounia.fullstackcodingchallenge"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f2b6465d-d4bb-4a1d-a8c6-c1aded727757"
+      }
+    },
+    "owner": "raed-rdhaounia"
   }
 }
