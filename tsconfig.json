@@ -1,6 +1,16 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@genarators": ["./components/generator/index.ts"],
+      "@others": ["./components/others/index.ts"],
+      "@constants": ["./constants/index.ts"],
+      "@hooks": ["./hooks/index.ts"],
+      "@navigation": ["./navigation/index.ts"],
+      "@screen": ["./screen/index.ts"],
+      "@utils": ["./utils/index.ts"],
+    }
   }
 }
