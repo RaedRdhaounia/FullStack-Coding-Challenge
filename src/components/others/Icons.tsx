@@ -1,7 +1,7 @@
 import React from "react";
-import { useNavigation            } from "@react-navigation/native";
-import { MaterialCommunityIcons   } from "@expo/vector-icons"      ;
-import { HomeScreenNavigationProp } from "constants/types/Tscreens";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { MaterialCommunityIcons  } from "@expo/vector-icons"      ;
+import { DetailsScreenRouteProp, HomeScreenNavigationProp } from "constants/types/Tscreens";
 
 
 export function FavouriteIcon() {
@@ -15,8 +15,10 @@ export function FavouriteIcon() {
 }
 
 export function AddToFavouriteIcon() {
+  const route =useRoute<DetailsScreenRouteProp>()
+  const {itemId} = route.params
   function addToFavourite() {
-    console.log("add to favourite")
+      console.log("add to favourite", itemId)
   }
   return (
     <MaterialCommunityIcons name="heart-plus" size={24} color="black"onPress={addToFavourite} />
