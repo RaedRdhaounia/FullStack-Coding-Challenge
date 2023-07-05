@@ -1,5 +1,6 @@
 import { HomeScreenNavigationProp, HomeScreenRouteProp } from "constants/types/Tscreens";
-import { Button, View } from "react-native";
+import { Button } from "react-native";
+import { SafeAreaWrapper } from "./SafeAreaWrapper";
 
 interface HomeScreenProps {
   navigation: HomeScreenNavigationProp;
@@ -11,9 +12,9 @@ const  HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) =>  {
   // item id will be change just for now placing as constant
   const handleNavigate = () => { navigation.navigate('Details', {itemId: 1}) };
   return (
-    <View>
+    <SafeAreaWrapper>
       <Button title="Go to Details" onPress={handleNavigate} />
-    </View>
+    </SafeAreaWrapper>
   );
 };
 

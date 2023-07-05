@@ -21,6 +21,7 @@ export default () => {
     headerTitleContainerStyle: { marginLeft: 0 },
     headerLeftContainerStyle: { paddingLeft: 0 },
     headerRightContainerStyle: { paddingRight: 0 },
+    headerTransparent: true,
     headerTitle: ({ children }: { children: string }) => <Text>{children}</Text>,
   } as StackHeaderOptions;
 

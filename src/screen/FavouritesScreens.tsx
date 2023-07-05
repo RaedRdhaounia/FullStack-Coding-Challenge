@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, SafeAreaView } from 'react-native';
+import { Text } from 'react-native';
 import { FavouritesScreenNavigationProp, FavouritesScreenRouteProp } from '../constants/types/Tscreens';
+import { SafeAreaWrapper } from './SafeAreaWrapper';
 
 interface FavouritesScreenProps {
   navigation: FavouritesScreenNavigationProp;
@@ -9,9 +10,9 @@ interface FavouritesScreenProps {
 
 const FavouritesScreen: React.FC<FavouritesScreenProps> = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaWrapper>
       <Text>Favourites Screen</Text>
-    </SafeAreaView>
+    </SafeAreaWrapper>
   );
 };
 
