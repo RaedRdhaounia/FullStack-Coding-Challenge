@@ -4,6 +4,7 @@ import { StackHeaderOptions } from '@react-navigation/stack/lib/typescript/src/t
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { HomeScreenNavigationProp } from 'constants/types/Tscreens';
+import { AddToFavouriteIcon, FavouriteIcon } from '../components/others/Icons';
 
 type optionT = {
   stack: NativeStackNavigationOptions;
@@ -16,11 +17,7 @@ export default () => {
     const navigation = useNavigation<HomeScreenNavigationProp>();
 
   const header = {
-    headerStyle: { backgroundColor: 'transparent' },
     headerTitleAlign: 'center',
-    headerTitleContainerStyle: { marginLeft: 0 },
-    headerLeftContainerStyle: { paddingLeft: 0 },
-    headerRightContainerStyle: { paddingRight: 0 },
     headerTransparent: true,
     headerTitle: ({ children }: { children: string }) => <Text>{children}</Text>,
   } as StackHeaderOptions;
@@ -30,26 +27,18 @@ export default () => {
     home: {
       ...header,
       headerTitle: () => null,
-      headerRight: () => (
-        <Text onPress={() => navigation.navigate('Favourites')}>favourite</Text>
-      ),
+      headerRight: FavouriteIcon,
       headerLeft: () => null,
     },
     details: {
       ...header,
-      headerTitle: () => null,
-      headerRight: () => (
-        <Text onPress={() => console.log('dispatch add to favourites')}>favourite +</Text>
-      ),
-      headerLeft: () => (
-        <Text onPress={() => navigation.goBack()}>{'<-'}</Text>
-      ),
+      headerTitle: () => <Text>favourite</Text>,
+      headerRight: AddToFavouriteIcon,
     },
     favourites: {
       ...header,
       headerTitle: () => <Text>favourite</Text>,
       headerRight: () => null,
-      headerLeft: () => null,
     },
   };
 
