@@ -1,7 +1,17 @@
+// ==============================|| moviesSlice module ||============================== //
+
+// ==============================|| IMPORTS
+
+//-- toolkit slice methods imports
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Movie} from '../constants/types/reduxState';
+
+//-- async fetch movies list by top rated imports
 import {fetchTopRatedMovies} from '../utils';
 
+//-- Movie model add as interface
+import {Movie} from '../constants/types/reduxState';
+
+//-------- locale state interface
 interface MoviesState {
   favorites: Movie[];
   topRated: Movie[];
@@ -11,6 +21,7 @@ interface MoviesState {
   error: string | null;
 }
 
+//-------- initialized state
 const initialState: MoviesState = {
   favorites: [],
   topRated: [],
@@ -20,9 +31,14 @@ const initialState: MoviesState = {
   error: null,
 };
 
+// ==============================|| create new slice for movies ||============================== //
+
 const moviesSlice = createSlice({
+  //-------- state name
   name: 'movies',
+  //-------- initial state declaration
   initialState,
+  //-------- reducers declaration (statics)
   reducers: {
     addToFavorites: (state, action: PayloadAction<Movie>) => {
       state.favorites.push(action.payload);
@@ -39,6 +55,7 @@ const moviesSlice = createSlice({
       state.totalPages = action.payload;
     },
   },
+  //-------- async reducers declaration (fetching data)
   extraReducers: (builder) => {
     builder
       .addCase(fetchTopRatedMovies.pending, (state) => {
@@ -49,7 +66,6 @@ const moviesSlice = createSlice({
         state.loading = 'succeeded';
         const fetchedMovies = action.payload;
         state.totalPages = action.payload.total_results;
-
         if (state.currentPage === 1) {
           state.topRated = fetchedMovies.results;
           state.currentPage = 1;
@@ -62,11 +78,13 @@ const moviesSlice = createSlice({
       })
       .addCase(fetchTopRatedMovies.rejected, (state, action) => {
         state.loading = 'failed';
-        state.error = action.error.message ?? 'Error fetching top-rated movies';
+        state.error = action.error.message ?? 'Oops ! Something was wrong';
       });
   },
 });
 
+//-------- export actions
 export const {addToFavorites, removeFromFavorites} = moviesSlice.actions;
 
+//-------- export reducer
 export default moviesSlice.reducer;
