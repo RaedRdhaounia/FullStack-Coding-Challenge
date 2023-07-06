@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import { StackHeaderOptions } from '@react-navigation/stack/lib/typescript/src/types';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
-import { AddToFavouriteIcon, BackIcon, FavouriteIcon } from '../components/others/Icons';
+import { AddToFavouriteIcon, BackIcon, FavouriteIcon } from '../components/generator/Icons';
 
 type optionT = {
   stack: NativeStackNavigationOptions;

@@ -1,19 +1,53 @@
-import { HomeScreenNavigationProp, HomeScreenRouteProp } from "constants/types/Tscreens";
-import { Button } from "react-native";
+// ==============================|| HomeScreen module ||============================== //
+
+// ==============================|| IMPORTS
+
+import React, { useCallback } from "react";
+
+//-- native components imports
+import { Button, View } from "react-native";
+
+//-- screen styles component imports
 import { SafeAreaWrapper } from "./SafeAreaWrapper";
 
+//-- types imports
+import { HomeScreenNavigationProp, HomeScreenRouteProp } from "constants/types/Tscreens";
+import TextInputGen from "../components/generator/TextInputSearch";
+
+
+// ==============================|| HomeScreen component ||============================== //
+
+//-------- locat component interface
 interface HomeScreenProps {
   navigation: HomeScreenNavigationProp;
   route: HomeScreenRouteProp;
 }
 
+/**
+ * main screen get list of movies ( by Top rated ) with search input query 
+ * @name: HomeScreen
+ * @returns React.FC
+ * @example
+ * <HomeScreen/> 
+ */
 const  HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) =>  {
 
-  // item id will be change just for now placing as constant
+  // --- local state
+  const [text, onChangeText] = React.useState('');
+
+  //-------- function methodes
+  // --- navigation to Details function navigator
   const handleNavigate = () => { navigation.navigate('Details', {itemId: 1}) };
+  // --- handlechange text
+  const handleChangeText = (_text: string) => {onChangeText(_text)}
+
+  //-------- render component
   return (
     <SafeAreaWrapper>
+      <View>
+      <TextInputGen onChangeText={handleChangeText} value={text}/>
       <Button title="Go to Details" onPress={handleNavigate} />
+      </View>
     </SafeAreaWrapper>
   );
 };
