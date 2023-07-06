@@ -14,7 +14,7 @@ import { SafeAreaWrapper } from './SafeAreaWrapper';
 import { FavouritesScreenNavigationProp, FavouritesScreenRouteProp } from '../constants/types/Tscreens';
 
 
-// ==============================|| HomeScreen component ||============================== //
+// ==============================|| FavouritesScreen component ||============================== //
 
 //-------- locat component interface
 interface FavouritesScreenProps {
