@@ -5,14 +5,16 @@
 import React from 'react';
 
 //-- native components imports
-import { Text } from 'react-native';
+import {Text} from 'react-native';
 
 //-- screen styles component imports
-import { SafeAreaWrapper } from './SafeAreaWrapper';
+import {SafeAreaWrapper} from './SafeAreaWrapper';
 
 //-- types imports
-import { FavouritesScreenNavigationProp, FavouritesScreenRouteProp } from '../constants/types/Tscreens';
-
+import {
+  FavouritesScreenNavigationProp,
+  FavouritesScreenRouteProp,
+} from '../constants/types/Tscreens';
 
 // ==============================|| FavouritesScreen component ||============================== //
 
@@ -27,10 +29,9 @@ interface FavouritesScreenProps {
  * @name FavouritesScreen
  * @returns React.FC
  * @example
- * <FavouritesScreen/> 
+ * <FavouritesScreen/>
  */
 const FavouritesScreen: React.FC<FavouritesScreenProps> = () => {
-
   //-------- render component
   return (
     <SafeAreaWrapper>

@@ -2,20 +2,22 @@
 
 // ==============================|| IMPORTS
 
-import React from "react";
+import React from 'react';
 
 //-- native components imports
-import { Button, View } from "react-native";
+import {Button, View} from 'react-native';
 
 //-- components imports
-import TextInputGen from "../components/generator/TextInputSearch";
+import {TextInputGen} from '../components/generator/';
 
 //-- screen styles component imports
-import { SafeAreaWrapper } from "./SafeAreaWrapper";
+import {SafeAreaWrapper} from './SafeAreaWrapper';
 
 //-- types imports
-import { HomeScreenNavigationProp, HomeScreenRouteProp } from "constants/types/Tscreens";
-
+import {
+  HomeScreenNavigationProp,
+  HomeScreenRouteProp,
+} from 'constants/types/Tscreens';
 
 // ==============================|| HomeScreen component ||============================== //
 
@@ -26,32 +28,35 @@ interface HomeScreenProps {
 }
 
 /**
- * main screen get list of movies ( by Top rated ) with search input query 
+ * main screen get list of movies ( by Top rated ) with search input query
  * @name HomeScreen
  * @returns React.FC
  * @example
- * <HomeScreen/> 
+ * <HomeScreen/>
  */
-const  HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) =>  {
-
+const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   // --- local state
   const [text, onChangeText] = React.useState('');
 
   //-------- function methodes
   // --- navigation to Details function navigator
-  const handleNavigate = () => { navigation.navigate('Details', {itemId: 1}) };
+  const handleNavigate = () => {
+    navigation.navigate('Details', {itemId: 1});
+  };
   // --- handlechange text
-  const handleChangeText = (_text: string) => {onChangeText(_text)}
+  const handleChangeText = (_text: string) => {
+    onChangeText(_text);
+  };
 
   //-------- render component
   return (
     <SafeAreaWrapper>
       <View>
-      <TextInputGen onChangeText={handleChangeText} value={text}/>
-      <Button title="Go to Details" onPress={handleNavigate} />
+        <TextInputGen onChangeText={handleChangeText} value={text} />
+        <Button title="Go to Details" onPress={handleNavigate} />
       </View>
     </SafeAreaWrapper>
   );
 };
 
-export default HomeScreen
+export default HomeScreen;
