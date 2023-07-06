@@ -33,7 +33,7 @@
       },
       "api" : {
         "token": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OGQyOWVmYTIwMTg4NTYwOTc5Nzg2NDYxNDQxYzYyMyIsInN1YiI6IjY0YTRhYTZlYTBiZTI4MDEyZWVmMjllYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rTm7F8oW86SqdIo4vKSggssA74DlNST8K6IWHZ2982k",
-        "basedURL": "https://api.themoviedb.org/3"
+        "baseURL": "https://api.themoviedb.org/3"
       }
     },
     "owner": "raed-rdhaounia"
