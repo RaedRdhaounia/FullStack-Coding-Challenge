@@ -1,9 +1,24 @@
+// ==============================|| FavouritesScreen module ||============================== //
+
+// ==============================|| IMPORTS
+
 import React from 'react';
-import { Text } from 'react-native';
-import { StackHeaderOptions } from '@react-navigation/stack/lib/typescript/src/types';
+
+//-- native components imports
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+//-types
+import { StackHeaderOptions } from '@react-navigation/stack/lib/typescript/src/types';
+
+//-- components imports
+//- native components imports
+import { Text } from 'react-native';
+//- generators components imports
 import { AddToFavouriteIcon, BackIcon, FavouriteIcon } from '../components/generator/Icons';
 
+
+// ==============================|| useScreenOptions function ||============================== //
+
+//-------- locat options stack type
 type optionT = {
   stack: NativeStackNavigationOptions;
   home: NativeStackNavigationOptions;
@@ -11,14 +26,28 @@ type optionT = {
   favourites: NativeStackNavigationOptions;
 };
 
-export default () => {
+/**
+ * @description we use this function for managment options header bar for screens stack 
+ * @name useScreenOptions
+ * @returns {options} : optionT
+ * @example
+ * const screenOption = useScreenOptions()
+ * <Stack.Screen
+ *   name="Home" 
+ *   component={HomeScreen}
+ *   options={screenOption.home} 
+ * />
+ */
+export default function useScreenOptions(): optionT {
 
+  //-------- based header bar styles component
   const header = {
     headerTitleAlign: 'center',
     headerTransparent: true,
     headerTitle: ({ children }: { children: string }) => <Text>{children}</Text>,
   } as StackHeaderOptions;
 
+  //-------- returned function build based on spread operator syntax
   const options = {
     stack: header,
     home: {
@@ -43,5 +72,6 @@ export default () => {
     },
   };
 
+  //-------- function returns
   return options as unknown as optionT;
 };
