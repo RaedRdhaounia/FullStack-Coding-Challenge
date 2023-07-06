@@ -5,16 +5,19 @@
 import React from 'react';
 
 //-- native components imports
-import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
 //-types
-import { StackHeaderOptions } from '@react-navigation/stack/lib/typescript/src/types';
+import {StackHeaderOptions} from '@react-navigation/stack/lib/typescript/src/types';
 
 //-- components imports
 //- native components imports
-import { Text } from 'react-native';
+import {Text} from 'react-native';
 //- generators components imports
-import { AddToFavouriteIcon, BackIcon, FavouriteIcon } from '../components/generator/Icons';
-
+import {
+  AddToFavouriteIcon,
+  BackIcon,
+  FavouriteIcon,
+} from '../components/generator';
 
 // ==============================|| useScreenOptions function ||============================== //
 
@@ -27,24 +30,23 @@ type optionT = {
 };
 
 /**
- * @description we use this function for managment options header bar for screens stack 
+ * @description we use this function for managment options header bar for screens stack
  * @name useScreenOptions
  * @returns {options} : optionT
  * @example
  * const screenOption = useScreenOptions()
  * <Stack.Screen
- *   name="Home" 
+ *   name="Home"
  *   component={HomeScreen}
- *   options={screenOption.home} 
+ *   options={screenOption.home}
  * />
  */
 export default function useScreenOptions(): optionT {
-
   //-------- based header bar styles component
   const header = {
     headerTitleAlign: 'center',
     headerTransparent: true,
-    headerTitle: ({ children }: { children: string }) => <Text>{children}</Text>,
+    headerTitle: ({children}: {children: string}) => <Text>{children}</Text>,
   } as StackHeaderOptions;
 
   //-------- returned function build based on spread operator syntax
@@ -53,25 +55,23 @@ export default function useScreenOptions(): optionT {
     home: {
       ...header,
       headerTitle: () => null,
-      headerRight: ()=> <FavouriteIcon/>,
+      headerRight: () => <FavouriteIcon />,
       headerLeft: () => null,
     },
     details: {
       ...header,
       headerTitle: () => null,
-      headerRight: ()=> <AddToFavouriteIcon/>,
-      headerLeft: () => <BackIcon color='gray'/>,
-
+      headerRight: () => <AddToFavouriteIcon />,
+      headerLeft: () => <BackIcon color="white" />,
     },
     favourites: {
       ...header,
       headerTitle: null,
       headerRight: () => null,
-      headerLeft: () => <BackIcon color='white'/>,
-
+      headerLeft: () => <BackIcon color="gray" />,
     },
   };
 
   //-------- function returns
   return options as unknown as optionT;
-};
+}

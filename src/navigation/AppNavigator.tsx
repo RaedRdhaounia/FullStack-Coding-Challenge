@@ -3,10 +3,10 @@
 // ==============================|| IMPORTS
 import React from 'react';
 //-- container navigation imports
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 
 //-- Stack screen imports
-import Screens from "./Screens"
+import Screens from './Screens';
 
 // ==============================|| AppNavigator component||============================== //
 /**
@@ -14,9 +14,11 @@ import Screens from "./Screens"
  * @name: AppNavigator
  * @returns React.FC.
  * @example
- * <AppNavigator/> 
+ * <AppNavigator/>
  */
 
-const AppNavigator: React.FC = () =>  ( <NavigationContainer children={<Screens/>}/> );
+const AppNavigator: React.FC = () => (
+  <NavigationContainer children={<Screens />} />
+);
 
 export default AppNavigator;

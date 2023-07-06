@@ -2,17 +2,19 @@
 
 // ==============================|| IMPORTS
 
-import React from "react";
+import React from 'react';
 
 //-- native components imports
-import { Text } from "react-native";
+import {Text} from 'react-native';
 
 //-- screen styles component imports
-import { SafeAreaWrapper } from "./SafeAreaWrapper";
+import {SafeAreaWrapper} from './SafeAreaWrapper';
 
 //-- types imports
-import { DetailsScreenNavigationProp, DetailsScreenRouteProp } from "constants/types/Tscreens";
-
+import {
+  DetailsScreenNavigationProp,
+  DetailsScreenRouteProp,
+} from 'constants/types/Tscreens';
 
 // ==============================|| DetailsScreen component ||============================== //
 
@@ -27,18 +29,18 @@ interface DetailsScreenProps {
  * @name DetailsScreen
  * @returns React.FC
  * @example
- * <DetailsScreen/> 
+ * <DetailsScreen/>
  */
-const DetailsScreen: React.FC<DetailsScreenProps> = ({ route }) => {
+const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
   // --- destraction params
-  const { itemId } = route.params;
+  const {itemId} = route.params;
 
   //-------- render component
   return (
-    <SafeAreaWrapper>
+    <SafeAreaWrapper backgroundColor="gray">
       <Text>Item ID: {itemId}</Text>
     </SafeAreaWrapper>
   );
 };
 
-export default DetailsScreen
+export default DetailsScreen;

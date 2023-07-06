@@ -2,11 +2,12 @@
 
 // ==============================|| IMPORTS
 
+import React from 'react';
 //-- native components imports
-import { SafeAreaView } from "react-native";
+import {SafeAreaView, StyleSheet} from 'react-native';
 
 //-- react native navigation imports
-import { useHeaderHeight } from '@react-navigation/elements';
+import {useHeaderHeight} from '@react-navigation/elements';
 
 // ==============================|| SafeAreaWrapper component ||============================== //
 /**
@@ -18,12 +19,29 @@ import { useHeaderHeight } from '@react-navigation/elements';
  * @param {props} props
  * @returns JSX.Element
  * @example
- * <SafeAreaWrapper children={<Screen/>} color="gray"/> 
+ * <SafeAreaWrapper children={<Screen/>} color="gray"/>
  */
-export const SafeAreaWrapper = ({ children, backgroundColor }: { children: React.ReactElement, backgroundColor?: string }) => {
-//-------- getter header bar Height
+export const SafeAreaWrapper = ({
+  children,
+  backgroundColor,
+}: {
+  children: React.ReactElement;
+  backgroundColor?: string;
+}) => {
+  //-------- getter header bar Height
   const headerHeight = useHeaderHeight();
   return (
-    <SafeAreaView style={{ flex: 1,  paddingTop: headerHeight, backgroundColor }} children={children} />
+    <SafeAreaView
+      style={{
+        ...styles.SafeAreaView,
+        paddingTop: headerHeight,
+        backgroundColor,
+      }}
+      children={children}
+    />
   );
-}
+};
+
+const styles = StyleSheet.create({
+  SafeAreaView: {flex: 1},
+});

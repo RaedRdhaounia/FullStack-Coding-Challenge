@@ -1,18 +1,19 @@
 import React from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import {View, TextInput, StyleSheet} from 'react-native';
+import {Ionicons} from '@expo/vector-icons';
 
 interface TextInputGenP {
-    value: string;
-    onChangeText: (text: string) => void;
-  }
-const TextInputGen: React.FC<TextInputGenP>  = ({ value, onChangeText }) => {
+  value: string;
+  onChangeText: (text: string) => void;
+}
+
+const TextInputGen: React.FC<TextInputGenP> = ({value, onChangeText}) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>
-      <Ionicons name="search-outline" size={24} color="black" />
+        <Ionicons name="search-outline" size={24} color="black" />
       </View>
-      <TextInput 
+      <TextInput
         placeholder="serach for a movie ..."
         value={value}
         onChangeText={onChangeText}
