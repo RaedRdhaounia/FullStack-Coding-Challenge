@@ -9,11 +9,11 @@ import Constants from 'expo-constants';
 import axios, {AxiosInstance} from 'axios';
 
 // -- symboles
-import {endPointT, symb} from '../constants/types/symboles';
+import {symb} from '../constants/types/symboles';
 
 //-------- destraction variables envirement needs (token and based url)
-const baseURL: string = Constants.manifest?.extra?.baseURL;
-const token: string = Constants.manifest?.extra?.token;
+const baseURL: string = Constants.manifest?.extra?.api?.baseURL;
+const token: string = Constants.manifest?.extra?.api?.token;
 
 // ==============================|| declaretion functions ||============================== //
 
@@ -39,14 +39,14 @@ const instance: AxiosInstance = axios.create({
  * @example
  * endPoint(related)
  */
-const endPoint = (_type: endPointT): string => {
+const endPoint = (_type: Symbol): string => {
   switch (_type) {
     case symb.query:
       return '/search/movie?query=';
     case symb.related:
       return '/movie/top_rated?language=en-US';
     case symb.byId:
-      return '/movie/5';
+      return '/movie/';
     default:
       return '/movie/top_rated?language=en-US';
   }
@@ -67,5 +67,11 @@ const pages = (_page?: number): string => {
   return `&page=${_page}`;
 };
 
+const id = (_id?: string): string => {
+  if (!_id) {
+    return '';
+  }
+  return `${_id}`;
+};
 //-------- locat component interface
-export default {endPoint, instance, pages};
+export default {endPoint, instance, pages, id};
