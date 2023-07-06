@@ -2,17 +2,19 @@
 
 // ==============================|| IMPORTS
 
-import React, { useCallback } from "react";
+import React from "react";
 
 //-- native components imports
 import { Button, View } from "react-native";
+
+//-- components imports
+import TextInputGen from "../components/generator/TextInputSearch";
 
 //-- screen styles component imports
 import { SafeAreaWrapper } from "./SafeAreaWrapper";
 
 //-- types imports
 import { HomeScreenNavigationProp, HomeScreenRouteProp } from "constants/types/Tscreens";
-import TextInputGen from "../components/generator/TextInputSearch";
 
 
 // ==============================|| HomeScreen component ||============================== //
@@ -25,7 +27,7 @@ interface HomeScreenProps {
 
 /**
  * main screen get list of movies ( by Top rated ) with search input query 
- * @name: HomeScreen
+ * @name HomeScreen
  * @returns React.FC
  * @example
  * <HomeScreen/> 
