@@ -27,7 +27,7 @@ type BackIconP = {
  * @name: FavouriteIcon
  * @Iconfamily : MaterialCommunityIcons
  * @props none 
- * @returns {JSX.Element} JSX.Element.
+ * @returns JSX.Element.
  * @example
  * <FavouriteIcon/> 
  */
@@ -52,7 +52,7 @@ export function FavouriteIcon() {
  * @name: AddToFavouriteIcon
  * @Iconfamily : MaterialCommunityIcons
  * @props none 
- * @returns {JSX.Element} JSX.Element.
+ * @returns JSX.Element.
  * @example
  * <AddToFavouriteIcon/> 
  */
@@ -78,7 +78,7 @@ export function AddToFavouriteIcon() {
  * 
  * @param props 
  * @props color : string - backgroundcolor of the back button.
- * @returns {JSX.Element} JSX.Element.
+ * @returns JSX.Element.
  * @example
  * <BackIcon color='red' /> 
  */
