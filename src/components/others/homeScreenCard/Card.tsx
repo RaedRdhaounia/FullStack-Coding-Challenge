@@ -50,20 +50,27 @@ const MovieList: React.FC<MovieListP> = ({movies, searchTerm, navigation}) => {
   // ==============================|| MovieList component ||============================== //
 
   const renderCard = ({item}: {item: Movie}) => {
+    //-- based url image
+    const imageBaseUrl = 'https://image.tmdb.org/t/p/original';
+    //-- navigation function declare method
     const handleNavigate = (id: number) => {
       navigation.navigate('Details', {itemId: id});
     };
-
     return (
       <TouchableOpacity
         style={styles.cardContainer}
         onPress={() => handleNavigate(item.id)}>
         <View style={styles.card}>
-          <Image source={{uri: item.poster}} style={styles.image} />
+          <Image
+            source={{
+              uri: imageBaseUrl + item.poster_path,
+            }}
+            style={styles.image}
+          />
           <View style={styles.titleContainer}>
             <Text style={styles.title}>{item.title}</Text>
             <View style={styles.starContainer}>
-              {StarIcons(item.averageRating)}
+              {StarIcons(item.vote_average)}
             </View>
           </View>
         </View>

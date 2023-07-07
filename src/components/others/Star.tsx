@@ -29,8 +29,8 @@ const StarIcons = (rating: number): JSX.Element[] => {
 
   //-- add stars with conditions styles to the starts array
   for (let i = 1; i <= 10; i++) {
-    const iconName = i > rating / 10 ? 'star' : 'staro';
-    const starColor = i > rating / 10 ? filledStarColor : emptyStarColor;
+    const iconName = i > rating ? 'star' : 'staro';
+    const starColor = i > rating ? filledStarColor : emptyStarColor;
     stars.push(
       <AntDesign
         name={iconName}

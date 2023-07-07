@@ -1,17 +1,28 @@
+/* eslint-disable react-native/no-inline-styles */
 // ==============================|| HomeScreen module ||============================== //
 
 // ==============================|| IMPORTS
 
-import React from 'react';
+import React, {useEffect} from 'react';
 
+//-- import navigation
+import {useNavigation} from '@react-navigation/native';
+
+//-- redux imports
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchTopRatedMovies} from '../redux/favoriteMoviesListSlice'
 //-- native components imports
-import {Button, View} from 'react-native';
+import {View} from 'react-native';
 
 //-- components imports
 import {TextInputGen} from '../components/generator/';
 
 //-- screen styles component imports
 import {SafeAreaWrapper} from './SafeAreaWrapper';
+
+//--  component imports
+import SeeMore from '../components/others/SeeMore';
+import MovieList from '../components/others/homeScreenCard/Card';
 
 //-- types imports
 import {
@@ -21,7 +32,7 @@ import {
 
 // ==============================|| HomeScreen component ||============================== //
 
-//-------- locat component interface
+//-------- local component interface
 interface HomeScreenProps {
   navigation: HomeScreenNavigationProp;
   route: HomeScreenRouteProp;
@@ -34,26 +45,29 @@ interface HomeScreenProps {
  * @example
  * <HomeScreen/>
  */
-const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
+const HomeScreen: React.FC<HomeScreenProps> = () => {
+  const dispatch = useDispatch();
+
   // --- local state
   const [text, onChangeText] = React.useState('');
-
-  //-------- function methodes
-  // --- navigation to Details function navigator
-  const handleNavigate = () => {
-    navigation.navigate('Details', {itemId: 1});
-  };
+  const navigation = useNavigation();
+  //-------- function methods
+  const movies = useSelector((state: any) => state.movies.topRated);
   // --- handlechange text
   const handleChangeText = (_text: string) => {
     onChangeText(_text);
   };
-
+  useEffect(() => {
+    // Dispatch the action to fetch the first list of movies
+    dispatch(fetchTopRatedMovies(1));
+  }, [dispatch]);
   //-------- render component
   return (
     <SafeAreaWrapper>
-      <View>
+      <View style={{paddingBottom: 100}}>
         <TextInputGen onChangeText={handleChangeText} value={text} />
-        <Button title="Go to Details" onPress={handleNavigate} />
+        <MovieList navigation={navigation} searchTerm={text} movies={movies} />
+        <SeeMore />
       </View>
     </SafeAreaWrapper>
   );
