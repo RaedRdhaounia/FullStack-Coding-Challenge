@@ -8,7 +8,7 @@ import React from 'react';
 import {MaterialIcons} from '@expo/vector-icons';
 
 // - redux imports actions and methods
-import {removeFromFavorites} from 'redux/favoriteMoviesListSlice';
+import {removeFromFavorites} from '../../../redux/favoriteMoviesListSlice';
 import {useDispatch} from 'react-redux';
 
 // ==============================|| Add movie to favorite list icon||============================== //
