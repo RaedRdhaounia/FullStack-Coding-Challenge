@@ -2,10 +2,10 @@
 
 // ==============================|| IMPORTS
 
-import React, {useState} from 'react';
+import React from 'react';
 
 //-- native components imports
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
 
 //-- screen styles component imports
 import {SafeAreaWrapper} from './SafeAreaWrapper';
@@ -16,7 +16,6 @@ import {
   FavouritesScreenRouteProp,
 } from '../constants/types/Tscreens';
 import {useSelector} from 'react-redux';
-import {MovieDetails} from '../constants/types/reduxState';
 import {RenderCard} from '../components/others/favouriteScreenCard/RenderdCard';
 
 // ==============================|| FavouritesScreen component ||============================== //
@@ -36,12 +35,11 @@ interface FavouritesScreenProps {
  */
 const FavouritesScreen: React.FC<FavouritesScreenProps> = () => {
   const favorites = useSelector((state) => state.movies.favorites);
-  const [movie, setMovie] = useState<MovieDetails[]>(favorites);
   //-------- render component
   return (
     <SafeAreaWrapper>
       <FlatList
-        data={movie}
+        data={favorites}
         keyExtractor={(item) => item.id.toString()}
         numColumns={2}
         renderItem={RenderCard}
