@@ -17,6 +17,7 @@ import {
 } from '../constants/types/Tscreens';
 import {useSelector} from 'react-redux';
 import {RenderCard} from '../components/others/favouriteScreenCard/RenderdCard';
+import {useNavigation} from '@react-navigation/native';
 
 // ==============================|| FavouritesScreen component ||============================== //
 
@@ -35,6 +36,7 @@ interface FavouritesScreenProps {
  */
 const FavouritesScreen: React.FC<FavouritesScreenProps> = () => {
   const favorites = useSelector((state) => state.movies.favorites);
+  const navigation = useNavigation();
   //-------- render component
   return (
     <SafeAreaWrapper>
@@ -42,7 +44,9 @@ const FavouritesScreen: React.FC<FavouritesScreenProps> = () => {
         data={favorites}
         keyExtractor={(item) => item.id.toString()}
         numColumns={2}
-        renderItem={RenderCard}
+        renderItem={({item}) => (
+          <RenderCard item={item} navigation={navigation} />
+        )}
         contentContainerStyle={styles.container}
       />
     </SafeAreaWrapper>

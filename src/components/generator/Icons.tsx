@@ -20,7 +20,8 @@ import {
 } from 'constants/types/Tscreens';
 import {addToFavorites} from '../../redux/favoriteMoviesListSlice';
 import {getMovieById} from '../../api/generator/methodes';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {MovieDetails} from 'constants/types/reduxState';
 
 //-- local props types
 type BackIconP = {
@@ -74,20 +75,24 @@ export function AddToFavoriteIcon() {
   // --- destruction params
   const {itemId} = route.params;
   const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.movies.favorites);
   // --- dispatch params
   async function addToFavorite() {
     const result = await getMovieById(1, itemId.toString());
     dispatch(addToFavorites(result));
   }
   //-------- render component
-  return (
-    <MaterialCommunityIcons
-      name="heart-plus"
-      size={24}
-      color="black"
-      onPress={addToFavorite}
-    />
-  );
+  if (!favorites.some((fav: MovieDetails) => fav.id === itemId)) {
+    return (
+      <MaterialCommunityIcons
+        name="heart-plus"
+        size={24}
+        color="black"
+        onPress={addToFavorite}
+      />
+    );
+  }
+  return null;
 }
 
 // ==============================|| custom back button icon||============================== //
