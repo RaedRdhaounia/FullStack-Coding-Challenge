@@ -5,7 +5,7 @@
 import React from 'react';
 
 //-- native components imports
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 //-- react native navigation imports
 import {useNavigation, useRoute} from '@react-navigation/native';
@@ -21,6 +21,7 @@ import {
 import {addToFavorites} from '../../redux/favoriteMoviesListSlice';
 import {getMovieById} from '../../api/generator/methodes';
 import {useDispatch, useSelector} from 'react-redux';
+import {MovieDetails} from 'constants/types/reduxState';
 
 //-- local props types
 type BackIconP = {
@@ -81,7 +82,7 @@ export function AddToFavoriteIcon() {
     dispatch(addToFavorites(result));
   }
   //-------- render component
-  if (!favorites.some((fav) => fav.id === itemId)) {
+  if (!favorites.some((fav: MovieDetails) => fav.id === itemId)) {
     return (
       <MaterialCommunityIcons
         name="heart-plus"

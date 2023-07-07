@@ -1,14 +1,24 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import StarIcons from '../Star';
 import {MovieDetails} from '../../../constants/types/reduxState';
 import {DeleteFromFavoriteIcon} from './DeleteButton';
 
-export const RenderCard = ({item}: {item: MovieDetails}) => {
+export const RenderCard = ({
+  item,
+  navigation,
+}: {
+  item: MovieDetails;
+  navigation: any;
+}) => {
   //-- based url image
   const imageBaseUrl = 'https://image.tmdb.org/t/p/original';
+  function handleNavigate() {
+    navigation.navigate('Details', {itemId: item.id});
+  }
   return (
-    <TouchableOpacity style={styles.cardContainer}>
+    <TouchableOpacity style={styles.cardContainer} onPress={handleNavigate}>
       <View style={styles.icon}>
         <DeleteFromFavoriteIcon itemId={item.id} />
       </View>
