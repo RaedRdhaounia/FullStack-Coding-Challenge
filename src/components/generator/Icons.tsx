@@ -5,7 +5,7 @@
 import React from 'react';
 
 //-- native components imports
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 //-- react native navigation imports
 import {useNavigation, useRoute} from '@react-navigation/native';
@@ -20,7 +20,7 @@ import {
 } from 'constants/types/Tscreens';
 import {addToFavorites} from '../../redux/favoriteMoviesListSlice';
 import {getMovieById} from '../../api/generator/methodes';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 //-- local props types
 type BackIconP = {
@@ -74,20 +74,24 @@ export function AddToFavoriteIcon() {
   // --- destruction params
   const {itemId} = route.params;
   const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.movies.favorites);
   // --- dispatch params
   async function addToFavorite() {
     const result = await getMovieById(1, itemId.toString());
     dispatch(addToFavorites(result));
   }
   //-------- render component
-  return (
-    <MaterialCommunityIcons
-      name="heart-plus"
-      size={24}
-      color="black"
-      onPress={addToFavorite}
-    />
-  );
+  if (!favorites.some((fav) => fav.id === itemId)) {
+    return (
+      <MaterialCommunityIcons
+        name="heart-plus"
+        size={24}
+        color="black"
+        onPress={addToFavorite}
+      />
+    );
+  }
+  return null;
 }
 
 // ==============================|| custom back button icon||============================== //
