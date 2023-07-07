@@ -16,6 +16,7 @@ import {
 
 //-- prop types imports
 import {Movie} from '../../../constants/types/reduxState';
+import StarIcons from '../Star';
 
 // ==============================|| MovieList component ||============================== //
 
@@ -61,7 +62,9 @@ const MovieList: React.FC<MovieListP> = ({movies, searchTerm, navigation}) => {
           <Image source={{uri: item.poster}} style={styles.image} />
           <View style={styles.titleContainer}>
             <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.rating}>{item.averageRating}</Text>
+            <View style={styles.starContainer}>
+              {StarIcons(item.averageRating)}
+            </View>
           </View>
         </View>
       </TouchableOpacity>
@@ -124,6 +127,9 @@ const styles = StyleSheet.create({
   rating: {
     fontSize: 14,
     color: 'gray',
+  },
+  starContainer: {
+    flexDirection: 'row',
   },
 });
 
