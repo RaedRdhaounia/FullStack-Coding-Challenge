@@ -5,7 +5,7 @@
 import React, {useEffect, useState} from 'react';
 
 //-- native components imports
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
 
 //-- screen styles component imports
 import {SafeAreaWrapper} from './SafeAreaWrapper';
@@ -15,10 +15,11 @@ import {
   DetailsScreenNavigationProp,
   DetailsScreenRouteProp,
 } from 'constants/types/Tscreens';
-import {Genre, MovieDetails} from '../constants/types/reduxState';
+import {MovieDetails} from '../constants/types/reduxState';
 
 //-- get movies details from APi
 import {getMovieById} from '../api/generator/methodes';
+import Badge from '../components/generator/Badge';
 
 // ==============================|| DetailsScreen component ||============================== //
 
@@ -97,17 +98,16 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
               <Text style={styles.title}>{title}</Text>
               <Text style={styles.rating}>{vote_average}</Text>
             </View>
-
             <View>
-              {genres &&
-                genres.map((gender: Genre, index: number) => {
-                  return (
-                    <Text key={index} style={styles.genre}>
-                      {gender.name}
-                    </Text>
-                  );
-                })}
+              <FlatList
+                data={genres}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({item}) => <Badge id={item.id} name={item.name} />}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+              />
             </View>
+
             <Text style={styles.releaseDate}>{release_date}</Text>
             <Text style={styles.duration}>{duration}</Text>
           </View>
