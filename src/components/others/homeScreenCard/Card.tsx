@@ -16,6 +16,7 @@ import {
 
 //-- prop types imports
 import {Movie} from '../../../constants/types/reduxState';
+import StarIcons from '../Star';
 
 // ==============================|| MovieList component ||============================== //
 
@@ -49,19 +50,28 @@ const MovieList: React.FC<MovieListP> = ({movies, searchTerm, navigation}) => {
   // ==============================|| MovieList component ||============================== //
 
   const renderCard = ({item}: {item: Movie}) => {
+    //-- based url image
+    const imageBaseUrl = 'https://image.tmdb.org/t/p/original';
+    //-- navigation function declare method
     const handleNavigate = (id: number) => {
       navigation.navigate('Details', {itemId: id});
     };
-
     return (
       <TouchableOpacity
         style={styles.cardContainer}
         onPress={() => handleNavigate(item.id)}>
         <View style={styles.card}>
-          <Image source={{uri: item.poster}} style={styles.image} />
+          <Image
+            source={{
+              uri: imageBaseUrl + item.poster_path,
+            }}
+            style={styles.image}
+          />
           <View style={styles.titleContainer}>
             <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.rating}>{item.averageRating}</Text>
+            <View style={styles.starContainer}>
+              {StarIcons(item.vote_average)}
+            </View>
           </View>
         </View>
       </TouchableOpacity>
@@ -111,19 +121,24 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'baseline',
+    justifyContent: 'space-evenly',
   },
   title: {
     flex: 1,
     fontSize: 16,
     fontWeight: 'bold',
     marginRight: 8,
+    alignSelf: 'center',
   },
   rating: {
     fontSize: 14,
     color: 'gray',
+  },
+  starContainer: {
+    flexDirection: 'row',
   },
 });
 

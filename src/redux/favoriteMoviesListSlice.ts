@@ -3,11 +3,16 @@
 // ==============================|| IMPORTS
 
 //-- toolkit slice methods imports
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction, createAsyncThunk} from '@reduxjs/toolkit';
+import {gettopRatedMovies} from '../api/generator/methodes';
 
-//-- async fetch movies list by top rated imports
-import {fetchTopRatedMovies} from '../utils';
-
+export const fetchTopRatedMovies = createAsyncThunk(
+  'movies/fetchTopRatedMovies',
+  async (page?: number) => {
+    const movies = await gettopRatedMovies(page);
+    return movies;
+  },
+);
 //-- Movie model add as interface
 import {Movie} from '../constants/types/reduxState';
 
@@ -25,7 +30,7 @@ interface MoviesState {
 const initialState: MoviesState = {
   favorites: [],
   topRated: [],
-  currentPage: 0,
+  currentPage: 1,
   totalPages: 0,
   loading: 'idle',
   error: null,
@@ -70,10 +75,8 @@ const moviesSlice = createSlice({
           state.topRated = fetchedMovies.results;
           state.currentPage = 1;
         } else {
-          if (state.currentPage < action.payload.page) {
-            state.currentPage = action.payload.page;
-            state.topRated = [...state.topRated, ...fetchedMovies.results];
-          }
+          state.currentPage = action.payload.page;
+          state.topRated = [...state.topRated, ...fetchedMovies.results];
         }
       })
       .addCase(fetchTopRatedMovies.rejected, (state, action) => {
@@ -84,7 +87,12 @@ const moviesSlice = createSlice({
 });
 
 //-------- export actions
-export const {addToFavorites, removeFromFavorites} = moviesSlice.actions;
+export const {
+  addToFavorites,
+  removeFromFavorites,
+  setCurrentPage,
+  setTotalPage,
+} = moviesSlice.actions;
 
 //-------- export reducer
 export default moviesSlice.reducer;
