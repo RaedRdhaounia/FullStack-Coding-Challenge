@@ -5,7 +5,7 @@
 import React from 'react';
 
 //-- native components imports
-import {Text} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
 
 //-- screen styles component imports
 import {SafeAreaWrapper} from './SafeAreaWrapper';
@@ -15,6 +15,8 @@ import {
   FavouritesScreenNavigationProp,
   FavouritesScreenRouteProp,
 } from '../constants/types/Tscreens';
+import {useSelector} from 'react-redux';
+import {RenderCard} from '../components/others/favouriteScreenCard/RenderdCard';
 
 // ==============================|| FavouritesScreen component ||============================== //
 
@@ -32,12 +34,26 @@ interface FavouritesScreenProps {
  * <FavouritesScreen/>
  */
 const FavouritesScreen: React.FC<FavouritesScreenProps> = () => {
+  const favorites = useSelector((state) => state.movies.favorites);
   //-------- render component
   return (
     <SafeAreaWrapper>
-      <Text>Favourites Screen</Text>
+      <FlatList
+        data={favorites}
+        keyExtractor={(item) => item.id.toString()}
+        numColumns={2}
+        renderItem={RenderCard}
+        contentContainerStyle={styles.container}
+      />
     </SafeAreaWrapper>
   );
 };
 
 export default FavouritesScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 16,
+    paddingTop: 16,
+  },
+});
