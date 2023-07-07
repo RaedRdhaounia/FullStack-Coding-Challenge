@@ -10,7 +10,7 @@ import {StyleSheet, View} from 'react-native';
 //-- react native navigation imports
 import {useNavigation, useRoute} from '@react-navigation/native';
 
-//-- icon componenet
+//-- icon component
 import {Ionicons, MaterialCommunityIcons} from '@expo/vector-icons';
 
 //-- types imports
@@ -18,6 +18,9 @@ import {
   DetailsScreenRouteProp,
   HomeScreenNavigationProp,
 } from 'constants/types/Tscreens';
+import {addToFavorites} from '../../redux/favoriteMoviesListSlice';
+import {getMovieById} from '../../api/generator/methodes';
+import {useDispatch} from 'react-redux';
 
 //-- local props types
 type BackIconP = {
@@ -26,20 +29,20 @@ type BackIconP = {
 
 // ==============================|| Favorite movie list icon||============================== //
 /**
- * @name: FavouriteIcon
+ * @name: FavoriteIcon
  * @Iconfamily : MaterialCommunityIcons
  * @props none
  * @returns JSX.Element.
  * @example
- * <FavouriteIcon/>
+ * <FavoriteIcon/>
  */
 
-export function FavouriteIcon() {
+export function FavoriteIcon() {
   //-------- navigation components config
-  // --- instance navigation methode
+  // --- instance navigation methods
   const navigation = useNavigation<HomeScreenNavigationProp>();
-  // --- navigation to Favourites function
-  function handleNavigationFavourites() {
+  // --- navigation to Favorites function
+  function handleNavigationFavorites() {
     navigation.navigate('Favourites');
   }
 
@@ -49,44 +52,45 @@ export function FavouriteIcon() {
       name="heart-multiple"
       size={24}
       color="red"
-      onPress={handleNavigationFavourites}
+      onPress={handleNavigationFavorites}
     />
   );
 }
 
-// ==============================|| Add movie to favourite list icon||============================== //
+// ==============================|| Add movie to favorite list icon||============================== //
 /**
- * @name: AddToFavouriteIcon
+ * @name: AddToFavoriteIcon
  * @Iconfamily : MaterialCommunityIcons
  * @props none
  * @returns JSX.Element.
  * @example
- * <AddToFavouriteIcon/>
+ * <AddToFavoriteIcon/>
  */
 
-export function AddToFavouriteIcon() {
+export function AddToFavoriteIcon() {
   //-------- navigation components config
-  // --- instance route methode
+  // --- instance route methods
   const route = useRoute<DetailsScreenRouteProp>();
-  // --- destraction params
+  // --- destruction params
   const {itemId} = route.params;
+  const dispatch = useDispatch();
   // --- dispatch params
-  function addToFavourite() {
-    console.log('add to favourite', itemId);
+  async function addToFavorite() {
+    const result = await getMovieById(1, itemId.toString());
+    dispatch(addToFavorites(result));
   }
-
   //-------- render component
   return (
     <MaterialCommunityIcons
       name="heart-plus"
       size={24}
       color="black"
-      onPress={addToFavourite}
+      onPress={addToFavorite}
     />
   );
 }
 
-// ==============================|| custum back button icon||============================== //
+// ==============================|| custom back button icon||============================== //
 /**
  * BackIcon : vector-icons
  *
@@ -98,14 +102,14 @@ export function AddToFavouriteIcon() {
  */
 
 export function BackIcon(props: BackIconP) {
-  //-------- destraction props
+  //-------- destruction props
   const {color} = props;
 
   //-------- navigation components config
-  // --- instance route methode
+  // --- instance route methods
   const navigation = useNavigation<HomeScreenNavigationProp>();
   // --- back to pervious screen (default home screen)
-  function handleNavigationFavourites() {
+  function handleNavigationFavorites() {
     navigation.goBack();
   }
 
@@ -116,7 +120,7 @@ export function BackIcon(props: BackIconP) {
         name="arrow-back"
         size={24}
         color="black"
-        onPress={handleNavigationFavourites}
+        onPress={handleNavigationFavorites}
       />
     </View>
   );
