@@ -1,8 +1,19 @@
+// ==============================|| Badge module ||============================== //
+
+// ==============================|| IMPORTS
+
 import React from 'react';
+
+//-- native components imports
 import {View, Text, StyleSheet} from 'react-native';
+
+//-- types imports
 import {Genre} from '../../constants/types/reduxState';
 
+// ==============================|| Badge component ||============================== //
+
 const Badge = ({name}: Genre) => {
+  //-------- random back background color function
   const getRandomColor = () => {
     const letters = '0123456789ABCDEF';
     let color = '#';
@@ -11,12 +22,16 @@ const Badge = ({name}: Genre) => {
     }
     return color;
   };
+
+  //-------- render component
   return (
     <View style={{...styles.container, backgroundColor: getRandomColor()}}>
       <Text style={styles.name}>{name}</Text>
     </View>
   );
 };
+
+export default Badge;
 
 const styles = StyleSheet.create({
   container: {
@@ -36,5 +51,3 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 });
-
-export default Badge;
