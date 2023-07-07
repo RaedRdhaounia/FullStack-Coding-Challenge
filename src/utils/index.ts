@@ -1,0 +1,1 @@
+export {fetchTopRatedMovies} from './dispatchActions';
