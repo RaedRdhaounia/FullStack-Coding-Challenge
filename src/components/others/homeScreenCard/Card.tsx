@@ -1,13 +1,25 @@
 // ==============================|| Card module ||============================== //
 
 // ==============================|| IMPORTS
+
 import React from 'react';
+
 //-- native component imports
 import {View, Text, Image, StyleSheet} from 'react-native';
 
+//-- single movieCard info type imports
 import {Movie} from '../../../constants/types/reduxState';
 
-const Card = ({item}: {item: Movie}) => {
+// ==============================|| Card component||============================== //
+/**
+ * manages our navigation tree
+ * @name: Card
+ * @returns {JSX.Element}.
+ * @example
+ * const data = {item : {poster: "http://...", title: "title", averageRating: 20}}
+ * <Card {...data} />
+ */
+const Card = ({item}: {item: Movie}): JSX.Element => {
   return (
     <View style={styles.card}>
       <Image source={{uri: item.poster}} style={styles.image} />
