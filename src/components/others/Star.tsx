@@ -3,17 +3,16 @@ import {AntDesign} from '@expo/vector-icons';
 import {StyleSheet} from 'react-native';
 
 const StarIcons = (rating: number) => {
-  const filledStarColor = 'gold';
-  const emptyStarColor = 'gray';
-
+  const filledStarColor = 'yellow';
+  const emptyStarColor = 'white';
   const stars = [];
   for (let i = 1; i <= 10; i++) {
-    const iconName = i <= rating ? 'star' : 'staro';
-    const starColor = i <= rating ? filledStarColor : emptyStarColor;
+    const iconName = i > rating / 10 ? 'star' : 'staro';
+    const starColor = i > rating / 10 ? filledStarColor : emptyStarColor;
     stars.push(
       <AntDesign
         name={iconName}
-        size={24}
+        size={8}
         color={starColor}
         style={styles.iconStar}
       />,

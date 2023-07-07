@@ -114,15 +114,17 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'baseline',
+    justifyContent: 'space-evenly',
   },
   title: {
     flex: 1,
     fontSize: 16,
     fontWeight: 'bold',
     marginRight: 8,
+    alignSelf: 'center',
   },
   rating: {
     fontSize: 14,
