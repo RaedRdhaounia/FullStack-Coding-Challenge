@@ -46,7 +46,9 @@ const moviesSlice = createSlice({
   //-------- reducers declaration (statics)
   reducers: {
     addToFavorites: (state, action: PayloadAction<Movie>) => {
-      state.favorites.push(action.payload);
+      if (!state.favorites.some((fav) => fav.id === action.payload.id)) {
+        state.favorites = [...state.favorites, action.payload];
+      }
     },
     removeFromFavorites: (state, action: PayloadAction<number>) => {
       state.favorites = state.favorites.filter(

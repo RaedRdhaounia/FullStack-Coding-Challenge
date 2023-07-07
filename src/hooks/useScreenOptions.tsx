@@ -16,7 +16,7 @@ import {Text} from 'react-native';
 import {
   AddToFavouriteIcon,
   BackIcon,
-  FavouriteIcon,
+  FavoriteIcon,
 } from '../components/generator';
 
 // ==============================|| useScreenOptions function ||============================== //
@@ -55,7 +55,7 @@ export default function useScreenOptions(): optionT {
     home: {
       ...header,
       headerTitle: () => null,
-      headerRight: () => <FavouriteIcon />,
+      headerRight: () => <FavoriteIcon />,
       headerLeft: () => null,
     },
     details: {
