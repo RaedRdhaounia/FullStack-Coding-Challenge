@@ -10,6 +10,10 @@ import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
 //-- screen styles component imports
 import {SafeAreaWrapper} from './SafeAreaWrapper';
 
+//-- import components
+import Badge from '../components/generator/Badge';
+import {AntDesign} from '@expo/vector-icons';
+
 //-- types imports
 import {
   DetailsScreenNavigationProp,
@@ -19,7 +23,6 @@ import {MovieDetails} from '../constants/types/reduxState';
 
 //-- get movies details from APi
 import {getMovieById} from '../api/generator/methodes';
-import Badge from '../components/generator/Badge';
 
 // ==============================|| DetailsScreen component ||============================== //
 
@@ -96,7 +99,10 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
           <View style={styles.detailsContainer}>
             <View style={styles.headerContainer}>
               <Text style={styles.title}>{title}</Text>
-              <Text style={styles.rating}>{vote_average}</Text>
+              <View style={styles.headerSubContainer}>
+                <Text style={styles.rating}>{vote_average}</Text>
+                <AntDesign name={'star'} size={24} color={'yellow'} />
+              </View>
             </View>
             <View>
               <FlatList
@@ -108,11 +114,14 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
               />
             </View>
 
-            <Text style={styles.releaseDate}>{release_date}</Text>
             <Text style={styles.duration}>{duration}</Text>
           </View>
           <View style={styles.descriptionBox}>
-            <Text style={styles.descriptionTitle}>overview</Text>
+            <View style={styles.headerContainer}>
+              <Text style={styles.descriptionTitle}>overview</Text>
+              <Text style={styles.releaseDate}>{release_date}</Text>
+            </View>
+
             <Text style={styles.overview}>{overview}</Text>
           </View>
         </View>
@@ -130,6 +139,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  headerSubContainer: {
+    flexDirection: 'row',
+  },
   poster: {
     width: '100%',
     height: 200,
@@ -139,7 +151,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   title: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: 'bold',
     color: '#0000FF',
     marginTop: 16,
