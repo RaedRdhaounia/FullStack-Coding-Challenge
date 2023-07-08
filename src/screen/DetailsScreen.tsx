@@ -24,6 +24,8 @@ import {MovieDetails} from '../constants/types/reduxState';
 //-- get movies details from APi
 import {getMovieById} from '../api/generator/methodes';
 
+import TypewriterText from 'react-native-typewriter';
+
 // ==============================|| DetailsScreen component ||============================== //
 
 //-------- based url image
@@ -120,7 +122,7 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
               <Text style={styles.descriptionTitle}>overview</Text>
               <Text style={styles.releaseDate}>{release_date}</Text>
             </View>
-            <Text style={styles.overview}>{overview}</Text>
+            <TypewriterText typing={1}>{overview}</TypewriterText>
           </View>
         </View>
       </View>
