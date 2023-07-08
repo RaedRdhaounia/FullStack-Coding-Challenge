@@ -9,11 +9,9 @@ export async function getMovies(
 ) {
   try {
     const response = await instance.get(endPoint(ep) + id(_id) + pages(pg));
-    console.log('response', response.data);
     const result = response.data;
     return result;
   } catch (error) {
-    console.log('error', error);
     return [];
   }
 }

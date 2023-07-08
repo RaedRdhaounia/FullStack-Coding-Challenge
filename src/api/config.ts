@@ -41,8 +41,6 @@ const instance: AxiosInstance = axios.create({
  */
 const endPoint = (_type: Symbol): string => {
   switch (_type) {
-    case symb.query:
-      return '/search/movie?query=';
     case symb.related:
       return '/movie/top_rated?language=en-US';
     case symb.byId:
@@ -73,5 +71,8 @@ const id = (_id?: string): string => {
   }
   return `${_id}`;
 };
+//-- based url image
+export const imageBaseUrl = 'https://image.tmdb.org/t/p/original';
+
 //-------- locat component interface
 export default {endPoint, instance, pages, id};

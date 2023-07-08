@@ -8,7 +8,7 @@ import React, {useContext} from 'react';
 import {MaterialIcons} from '@expo/vector-icons';
 
 import {Alert, ToastAndroid} from 'react-native';
-import {FavoritesMoviesContext} from '../../../hooks/StorageContext';
+import {FavoritesMoviesContext} from '../../../hooks/';
 
 // ==============================|| Add movie to favorite list icon||============================== //
 /**
@@ -19,7 +19,7 @@ import {FavoritesMoviesContext} from '../../../hooks/StorageContext';
  * @example
  * <DeleteFromFavoriteIcon/>
  */
-export function DeleteFromFavoriteIcon({itemId}: {itemId: number}) {
+export default function DeleteFromFavoriteIcon({itemId}: {itemId: number}) {
   const {removeFromFavorites} = useContext(FavoritesMoviesContext);
   //-------- navigation components config
   // --- dispatch params

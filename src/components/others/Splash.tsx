@@ -1,5 +1,5 @@
-import {View, Image, StyleSheet} from 'react-native';
 import React from 'react';
+import {View, Image, StyleSheet} from 'react-native';
 const localImage = require('../../../assets/splash.png');
 
 const Splash = () => {

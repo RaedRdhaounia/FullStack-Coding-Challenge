@@ -14,7 +14,7 @@ export const fetchTopRatedMovies = createAsyncThunk(
   },
 );
 //-- Movie model add as interface
-import {Movie} from '../constants/types/reduxState';
+import {Movie} from '../constants/';
 
 //-------- locale state interface
 interface MoviesState {

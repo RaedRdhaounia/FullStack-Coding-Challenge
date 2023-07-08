@@ -8,7 +8,8 @@ import React, {createContext, useState, useEffect, ReactNode} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //-- import FavoriteMovie type
-import {Movie} from '../constants/types/reduxState';
+import {Movie} from '../constants/';
+import {Alert} from 'react-native';
 
 // Define the shape of the context value
 type FavoritesMovieContextValue = {
@@ -61,7 +62,7 @@ export const FavoritesProvider: React.FC<{children: ReactNode}> = ({
           setFavorites(parsedFavorites);
         }
       } catch (error) {
-        console.error('Error loading favorites from storage:', error);
+        Alert.alert('Oops', 'Somethings was wrong');
       }
     };
 
@@ -74,7 +75,7 @@ export const FavoritesProvider: React.FC<{children: ReactNode}> = ({
       try {
         await AsyncStorage.setItem('favorites', JSON.stringify(favorites));
       } catch (error) {
-        console.error('Error saving favorites to storage:', error);
+        Alert.alert('Oops', 'Somethings was wrong');
       }
     };
 

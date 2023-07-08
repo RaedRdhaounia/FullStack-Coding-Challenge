@@ -19,9 +19,9 @@ import {
 //-- prop types imports
 import {Movie} from '../../../constants/types/reduxState';
 import StarIcon from '../Star';
+import {imageBaseUrl} from '../../../api/config';
 
 // ==============================|| MovieList component ||============================== //
-const imageBaseUrl = 'https://image.tmdb.org/t/p/original';
 
 // -- create instance for animation FlatList component
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList<Movie>);

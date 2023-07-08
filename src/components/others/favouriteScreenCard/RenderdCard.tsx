@@ -9,13 +9,14 @@ import {
   View,
 } from 'react-native';
 import StarIcon from '../Star';
-import {MovieDetails} from '../../../constants/types/reduxState';
-import {DeleteFromFavoriteIcon} from './DeleteButton';
+import {MovieDetails} from '../../../constants/';
+import DeleteFromFavoriteIcon from './DeleteButton';
+import {imageBaseUrl} from '../../../api/config';
 
 const windowWidth = Dimensions.get('window').width;
 const numColumns = 2;
 const itemWidth = windowWidth / numColumns;
-export const RenderCard = ({
+const RenderCard = ({
   item,
   navigation,
   animatedValue,
@@ -24,8 +25,6 @@ export const RenderCard = ({
   navigation: any;
   animatedValue: Animated.Value;
 }) => {
-  //-- based url image
-  const imageBaseUrl = 'https://image.tmdb.org/t/p/original';
   function handleNavigate() {
     navigation.navigate('Details', {itemId: item.id});
   }
@@ -71,6 +70,7 @@ export const RenderCard = ({
   );
 };
 
+export default RenderCard;
 // ==============================|| styles
 const styles = StyleSheet.create({
   header: {

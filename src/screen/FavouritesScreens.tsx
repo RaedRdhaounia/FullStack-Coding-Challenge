@@ -11,12 +11,12 @@ import {SafeAreaWrapper} from './SafeAreaWrapper';
 import {
   FavouritesScreenNavigationProp,
   FavouritesScreenRouteProp,
-} from '../constants/types/Tscreens';
-import {AnimatedFlatList} from '../components/others/favouriteScreenCard/AnimatedFlatList';
+} from '../constants/';
+import {AnimatedFlatList} from '../components/others/';
 import {useFocusEffect} from '@react-navigation/native';
 import {StatusBar} from 'react-native';
-import {getRandomColor} from '../utils/generateRandomColor';
-import {FavoritesMoviesContext} from '../hooks/StorageContext';
+import {getRandomColor} from '../utils/';
+import {FavoritesMoviesContext} from '../hooks/';
 
 // ==============================|| FavouritesScreen component ||============================== //
 
