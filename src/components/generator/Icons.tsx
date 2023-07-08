@@ -2,7 +2,7 @@
 
 // ==============================|| IMPORTS
 
-import React from 'react';
+import React, {useContext} from 'react';
 
 //-- native components imports
 import {Alert, StyleSheet, ToastAndroid, View} from 'react-native';
@@ -18,10 +18,9 @@ import {
   DetailsScreenRouteProp,
   HomeScreenNavigationProp,
 } from 'constants/types/Tscreens';
-import {addToFavorites} from '../../redux/favoriteMoviesListSlice';
 import {getMovieById} from '../../api/generator/methodes';
-import {useDispatch, useSelector} from 'react-redux';
-import {MovieDetails} from 'constants/types/reduxState';
+import {Movie, MovieDetails} from '../../constants/types/reduxState';
+import {FavoritesMoviesContext} from '../../hooks/StorageContext';
 
 //-- local props types
 type BackIconP = {
@@ -69,13 +68,12 @@ export function FavoriteIcon() {
  */
 
 export function AddToFavoriteIcon() {
+  const {addToFavorites, favorites} = useContext(FavoritesMoviesContext);
   //-------- navigation components config
   // --- instance route methods
   const route = useRoute<DetailsScreenRouteProp>();
   // --- destruction params
   const {itemId} = route.params;
-  const dispatch = useDispatch();
-  const favorites = useSelector((state) => state.movies.favorites);
   // --- dispatch params
   const showToast = () => {
     ToastAndroid.showWithGravityAndOffset(
@@ -87,8 +85,8 @@ export function AddToFavoriteIcon() {
     );
   };
   async function addToFavorite() {
-    const result = await getMovieById(1, itemId.toString());
-    await dispatch(addToFavorites(result));
+    const result = (await getMovieById(1, itemId.toString())) as Movie;
+    addToFavorites(result);
     await showToast();
   }
   //-------- render component

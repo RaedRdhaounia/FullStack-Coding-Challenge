@@ -11,6 +11,7 @@ import {Provider} from 'react-redux';
 
 //-- store imports
 import store from './src/redux/store';
+import {FavoritesProvider} from './src/hooks/StorageContext';
 
 // ==============================|| App component ||============================== //
 
@@ -23,8 +24,10 @@ import store from './src/redux/store';
  */
 export default function App(): JSX.Element {
   return (
-    <Provider store={store}>
-      <AppNavigator />
-    </Provider>
+    <FavoritesProvider>
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
+    </FavoritesProvider>
   );
 }
