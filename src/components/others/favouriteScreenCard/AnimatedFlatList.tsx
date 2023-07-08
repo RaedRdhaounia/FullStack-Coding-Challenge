@@ -16,7 +16,7 @@ export const AnimatedFlatList = ({data}: {data: MovieDetails[]}) => {
           duration: 500,
           useNativeDriver: false,
         }).start();
-      }, index * 2000);
+      }, index * 1000);
     });
 
     return () => {
