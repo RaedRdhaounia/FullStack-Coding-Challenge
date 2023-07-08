@@ -6,13 +6,13 @@
 import React, {useEffect} from 'react';
 
 //-- import navigation
-import {useNavigation} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 
 //-- redux imports
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchTopRatedMovies} from '../redux/favoriteMoviesListSlice';
 //-- native components imports
-import {View} from 'react-native';
+import {StatusBar, View} from 'react-native';
 
 //-- components imports
 import {TextInputGen} from '../components/generator/';
@@ -29,6 +29,7 @@ import {
   HomeScreenRouteProp,
 } from 'constants/types/Tscreens';
 import Splash from '../components/others/Splash';
+import {getRandomColor} from '../utils/generateRandomColor';
 
 // ==============================|| HomeScreen component ||============================== //
 
@@ -66,7 +67,9 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   const handleChangeText = (_text: string): void => {
     onChangeText(_text);
   };
-
+  useFocusEffect(() => {
+    StatusBar.setBackgroundColor(getRandomColor(), false);
+  });
   useEffect(() => {
     // Dispatch the action to fetch the first list of movies
     dispatch(fetchTopRatedMovies(1));

@@ -9,19 +9,12 @@ import {View, Text, StyleSheet} from 'react-native';
 
 //-- types imports
 import {Genre} from '../../constants/types/reduxState';
+import {getRandomColor} from '../../utils/generateRandomColor';
 
 // ==============================|| Badge component ||============================== //
 
 const Badge = ({name}: Genre) => {
   //-------- random back background color function
-  const getRandomColor = () => {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
 
   //-------- render component
   return (

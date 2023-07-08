@@ -25,6 +25,9 @@ import {MovieDetails} from '../constants/types/reduxState';
 import {getMovieById} from '../api/generator/methodes';
 
 import TypewriterText from 'react-native-typewriter';
+import {useFocusEffect} from '@react-navigation/native';
+import {StatusBar} from 'react-native';
+import {getRandomColor} from '../utils/generateRandomColor';
 
 // ==============================|| DetailsScreen component ||============================== //
 
@@ -52,6 +55,9 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
   const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState<MovieDetails>({
     id: itemId,
+  });
+  useFocusEffect(() => {
+    StatusBar.setBackgroundColor(getRandomColor(), false);
   });
   useEffect(() => {
     async function handleMovie() {

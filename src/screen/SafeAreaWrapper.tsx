@@ -8,6 +8,7 @@ import {
   Dimensions,
   ImageBackground,
   SafeAreaView,
+  StatusBar,
   StyleSheet,
 } from 'react-native';
 
@@ -43,6 +44,7 @@ export const SafeAreaWrapper = ({
         paddingTop: headerHeight,
         backgroundColor,
       }}>
+      <StatusBar animated backgroundColor="#999ED7" />
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
         {children}
       </ImageBackground>
