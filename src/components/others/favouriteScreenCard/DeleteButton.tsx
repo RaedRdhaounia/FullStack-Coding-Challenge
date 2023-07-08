@@ -57,7 +57,7 @@ export function DeleteFromFavoriteIcon({itemId}: {itemId: number}) {
   return (
     <MaterialIcons
       name="remove-circle"
-      size={24}
+      size={28}
       color="red"
       onPress={addToFavoriteAlert}
     />
