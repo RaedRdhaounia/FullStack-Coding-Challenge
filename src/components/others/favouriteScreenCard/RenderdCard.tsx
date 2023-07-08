@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import StarIcons from '../Star';
+import StarIcon from '../Star';
 import {MovieDetails} from '../../../constants/types/reduxState';
 import {DeleteFromFavoriteIcon} from './DeleteButton';
 
@@ -32,8 +32,9 @@ export const RenderCard = ({
         />
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{item.title}</Text>
-          <View style={styles.starContainer}>
-            {item.vote_average && StarIcons(item.vote_average)}
+          <View style={styles.averageContainer}>
+            <StarIcon />
+            <Text>{item.vote_average}</Text>
           </View>
         </View>
       </View>
@@ -93,7 +94,10 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: 'gray',
   },
-  starContainer: {
+  averageContainer: {
     flexDirection: 'row',
+    alignSelf: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'baseline',
   },
 });

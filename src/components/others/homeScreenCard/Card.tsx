@@ -14,9 +14,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+// -- import Start icon
+import StarIcon from '../Star';
+
 //-- prop types imports
 import {Movie} from '../../../constants/types/reduxState';
-import StarIcons from '../Star';
 
 // ==============================|| MovieList component ||============================== //
 
@@ -69,9 +71,10 @@ const MovieList: React.FC<MovieListP> = ({movies, searchTerm, navigation}) => {
           />
           <View style={styles.titleContainer}>
             <Text style={styles.title}>{item.title}</Text>
-            <View style={styles.starContainer}>
-              {StarIcons(item.vote_average)}
-            </View>
+          </View>
+          <View style={styles.averageContainer}>
+            <StarIcon />
+            <Text>{item.vote_average}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -111,7 +114,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     overflow: 'hidden',
     alignItems: 'center',
-    justifyContent: 'center',
     padding: 16,
   },
   image: {
@@ -122,23 +124,22 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     flex: 1,
-    flexDirection: 'column',
-    alignItems: 'baseline',
-    justifyContent: 'space-evenly',
+    alignSelf: 'flex-start',
   },
   title: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 12,
     fontWeight: 'bold',
-    marginRight: 8,
-    alignSelf: 'center',
   },
   rating: {
-    fontSize: 14,
+    fontSize: 12,
     color: 'gray',
   },
-  starContainer: {
+  averageContainer: {
     flexDirection: 'row',
+    alignSelf: 'flex-end',
+    justifyContent: 'flex-end',
+    alignItems: 'baseline',
   },
 });
 
