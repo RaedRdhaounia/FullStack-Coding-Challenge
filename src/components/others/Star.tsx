@@ -14,36 +14,24 @@ import {AntDesign} from '@expo/vector-icons';
 
 /**
  *
- * @name StarIcons
- * @returns {JSX.Element[]}
- * @example
- * <View> {StarIcons(rating)} </View>
+ * @name StarIcon
+ * @description icons component for a star icon
+ * @fontfamily AntDesign
+ * @field {size: 16,  color: "yellow", name: "star"}
+ * @returns {JSX.Element}
+ * @example <StarIcon/>
  */
-const StarIcons = (rating: number): JSX.Element[] => {
-  //-- colors declaration
-  const filledStarColor = 'yellow';
-  const emptyStarColor = 'white';
-
-  //-- init stars
-  const stars = [];
-
-  //-- add stars with conditions styles to the starts array
-  for (let i = 1; i <= 10; i++) {
-    const iconName = i > rating ? 'star' : 'staro';
-    const starColor = i > rating ? filledStarColor : emptyStarColor;
-    stars.push(
-      <AntDesign
-        name={iconName}
-        size={8}
-        color={starColor}
-        style={styles.iconStar}
-      />,
-    );
-  }
-  // -- return JSX.Element[]
-  return stars;
+const StarIcon = (): JSX.Element => {
+  return (
+    <AntDesign
+      name={'star'}
+      size={16}
+      color={'yellow'}
+      style={styles.iconStar}
+    />
+  );
 };
-export default StarIcons;
+export default StarIcon;
 
 const styles = StyleSheet.create({
   iconStar: {
