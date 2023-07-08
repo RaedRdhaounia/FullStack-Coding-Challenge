@@ -4,8 +4,14 @@
 
 import React from 'react';
 //-- native components imports
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {
+  Dimensions,
+  ImageBackground,
+  SafeAreaView,
+  StyleSheet,
+} from 'react-native';
 
+import backgroundImage from '../assets/images/background.jpg';
 //-- react native navigation imports
 import {useHeaderHeight} from '@react-navigation/elements';
 
@@ -36,12 +42,20 @@ export const SafeAreaWrapper = ({
         ...styles.SafeAreaView,
         paddingTop: headerHeight,
         backgroundColor,
-      }}
-      children={children}
-    />
+      }}>
+      <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
+        {children}
+      </ImageBackground>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   SafeAreaView: {flex: 1},
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'center',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
 });
