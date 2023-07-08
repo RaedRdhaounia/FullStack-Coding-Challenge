@@ -1,4 +1,4 @@
-import {MovieDetails} from '../../../constants/types/reduxState';
+import {MovieDetails} from '../../../constants/';
 import React, {useEffect, useRef} from 'react';
 import {Animated, StyleSheet} from 'react-native';
 import RenderCard from './RenderdCard';

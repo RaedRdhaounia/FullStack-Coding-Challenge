@@ -8,7 +8,7 @@ import React, {createContext, useState, useEffect, ReactNode} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //-- import FavoriteMovie type
-import {Movie} from '../constants/types/reduxState';
+import {Movie} from '../constants/';
 import {Alert} from 'react-native';
 
 // Define the shape of the context value

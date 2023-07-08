@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import StarIcon from '../Star';
-import {MovieDetails} from '../../../constants/types/reduxState';
+import {MovieDetails} from '../../../constants/';
 import DeleteFromFavoriteIcon from './DeleteButton';
 import {imageBaseUrl} from '../../../api/config';
 
