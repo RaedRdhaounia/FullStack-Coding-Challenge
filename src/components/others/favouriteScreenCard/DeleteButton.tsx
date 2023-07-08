@@ -2,15 +2,13 @@
 
 // ==============================|| IMPORTS
 
-import React from 'react';
+import React, {useContext} from 'react';
 
 //-- icon components imports
 import {MaterialIcons} from '@expo/vector-icons';
 
-// - redux imports actions and methods
-import {removeFromFavorites} from '../../../redux/favoriteMoviesListSlice';
-import {useDispatch} from 'react-redux';
 import {Alert, ToastAndroid} from 'react-native';
+import {FavoritesMoviesContext} from '../../../hooks/StorageContext';
 
 // ==============================|| Add movie to favorite list icon||============================== //
 /**
@@ -22,10 +20,10 @@ import {Alert, ToastAndroid} from 'react-native';
  * <DeleteFromFavoriteIcon/>
  */
 export function DeleteFromFavoriteIcon({itemId}: {itemId: number}) {
+  const {removeFromFavorites} = useContext(FavoritesMoviesContext);
   //-------- navigation components config
-  // --- destruction params
-  const dispatch = useDispatch();
   // --- dispatch params
+
   const showToast = () => {
     ToastAndroid.showWithGravityAndOffset(
       'Your movie removed with success',
@@ -36,7 +34,7 @@ export function DeleteFromFavoriteIcon({itemId}: {itemId: number}) {
     );
   };
   async function handleRemove() {
-    await dispatch(removeFromFavorites(itemId));
+    await removeFromFavorites(itemId);
     await showToast();
   }
   const addToFavoriteAlert = () => {
