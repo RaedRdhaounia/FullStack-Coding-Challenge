@@ -1,67 +1,96 @@
-/* eslint-disable no-undef */
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Animated,
+  Dimensions,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import StarIcon from '../Star';
 import {MovieDetails} from '../../../constants/types/reduxState';
 import {DeleteFromFavoriteIcon} from './DeleteButton';
 
+const windowWidth = Dimensions.get('window').width;
+const numColumns = 2;
+const itemWidth = windowWidth / numColumns;
 export const RenderCard = ({
   item,
   navigation,
+  animatedValue,
 }: {
   item: MovieDetails;
   navigation: any;
+  animatedValue: Animated.Value;
 }) => {
   //-- based url image
   const imageBaseUrl = 'https://image.tmdb.org/t/p/original';
   function handleNavigate() {
     navigation.navigate('Details', {itemId: item.id});
   }
-  return (
-    <TouchableOpacity style={styles.cardContainer} onPress={handleNavigate}>
-      <View style={styles.icon}>
-        <DeleteFromFavoriteIcon itemId={item.id} />
-      </View>
 
-      <View style={styles.card}>
-        <Image
-          source={{
-            uri: imageBaseUrl + item.poster_path,
-          }}
-          style={styles.image}
-        />
-        <View style={styles.titleContainer}>
+  const animatedStyle = {
+    opacity: animatedValue.interpolate({
+      inputRange: [0, 0.7],
+      outputRange: [0, 1],
+    }),
+    transform: [
+      {
+        scale: animatedValue.interpolate({
+          inputRange: [0, 0.7],
+          outputRange: [0.8, 1],
+        }),
+      },
+    ],
+  };
+  return (
+    <Animated.View
+      style={[styles.cardContainer, {maxWidth: itemWidth - 32}, animatedStyle]}>
+      <TouchableOpacity onPress={handleNavigate}>
+        <View style={styles.card}>
+          <ImageBackground
+            source={{
+              uri: imageBaseUrl + item.poster_path,
+            }}
+            style={styles.image}>
+            <View style={styles.header}>
+              <View style={styles.icon}>
+                <DeleteFromFavoriteIcon itemId={item.id} />
+              </View>
+              <View style={styles.averageContainer}>
+                <StarIcon />
+                <Text>{item.vote_average}</Text>
+              </View>
+            </View>
+          </ImageBackground>
           <Text style={styles.title}>{item.title}</Text>
-          <View style={styles.averageContainer}>
-            <StarIcon />
-            <Text>{item.vote_average}</Text>
-          </View>
         </View>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </Animated.View>
   );
 };
 
 // ==============================|| styles
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 16,
-    paddingTop: 16,
-  },
-  icon: {
+  header: {
     alignSelf: 'flex-end',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
+  },
+  icon: {
+    position: 'absolute',
+    top: 0,
+    right: 20,
   },
   cardContainer: {
     flex: 1,
     margin: 8,
     borderRadius: 8,
-    backgroundColor: '#fff',
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
+    paddingHorizontal: 2,
+    opacity: 0.7,
+    borderWidth: 2,
+    borderColor: '#999ED7',
   },
   card: {
     flex: 1,
@@ -69,19 +98,14 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 16,
+    padding: 8,
   },
   image: {
-    width: 150,
-    height: 150,
+    width: 200,
+    height: 200,
     borderRadius: 8,
     marginBottom: 8,
-  },
-  titleContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'baseline',
-    justifyContent: 'space-evenly',
+    resizeMode: 'cover',
   },
   title: {
     flex: 1,
@@ -89,15 +113,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginRight: 8,
     alignSelf: 'center',
-  },
-  rating: {
-    fontSize: 14,
-    color: 'gray',
+    color: '#999ED7',
+    textAlign: 'center',
   },
   averageContainer: {
+    flex: 1,
     flexDirection: 'row',
-    alignSelf: 'flex-end',
-    justifyContent: 'center',
-    alignItems: 'baseline',
+    position: 'absolute',
+    top: 0,
+    right: 120,
   },
 });
