@@ -28,11 +28,9 @@ import TypewriterText from 'react-native-typewriter';
 import {useFocusEffect} from '@react-navigation/native';
 import {StatusBar} from 'react-native';
 import {getRandomColor} from '../utils/generateRandomColor';
+import {imageBaseUrl} from 'api/config';
 
 // ==============================|| DetailsScreen component ||============================== //
-
-//-------- based url image
-const imageBaseUrl = 'https://image.tmdb.org/t/p/original';
 
 //-------- local component interface
 interface DetailsScreenProps {
