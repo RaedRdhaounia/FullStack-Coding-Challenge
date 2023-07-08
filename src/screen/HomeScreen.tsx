@@ -51,13 +51,22 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   // --- local state
   const [text, onChangeText] = React.useState('');
   const navigation = useNavigation();
-  //-------- function methods
   const movies = useSelector((state: any) => state.movies.topRated);
   const loading = useSelector((state: any) => state.movies.loading);
-  // --- handlechange text
-  const handleChangeText = (_text: string) => {
+  //-------- function methods
+
+  /**
+   * @name handleChangeText
+   * @description this function used to collect the text change and update the local state text
+   * @argument {string} _text
+   * @returns {void}
+   * @example
+   * onChangeText={onChangeText}
+   */
+  const handleChangeText = (_text: string): void => {
     onChangeText(_text);
   };
+
   useEffect(() => {
     // Dispatch the action to fetch the first list of movies
     dispatch(fetchTopRatedMovies(1));
@@ -67,7 +76,15 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
     <SafeAreaWrapper>
       <View style={{paddingBottom: 100}}>
         <TextInputGen onChangeText={handleChangeText} value={text} />
-        {loading === 'succeeded' ? <MovieList navigation={navigation} searchTerm={text} movies={movies} /> : <Splash/> }
+        {loading === 'succeeded' ? (
+          <MovieList
+            navigation={navigation}
+            searchTerm={text}
+            movies={movies}
+          />
+        ) : (
+          <Splash />
+        )}
       </View>
     </SafeAreaWrapper>
   );
