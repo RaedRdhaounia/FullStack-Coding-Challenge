@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginHorizontal: 10,
     marginBottom: 10,
+    backgroundColor: "#999ED7",
   },
   iconContainer: {
     marginRight: 10,
