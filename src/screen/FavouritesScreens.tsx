@@ -2,7 +2,7 @@
 
 // ==============================|| IMPORTS
 
-import React from 'react';
+import React, {useContext} from 'react';
 
 //-- screen styles component imports
 import {SafeAreaWrapper} from './SafeAreaWrapper';
@@ -12,11 +12,11 @@ import {
   FavouritesScreenNavigationProp,
   FavouritesScreenRouteProp,
 } from '../constants/types/Tscreens';
-import {useSelector} from 'react-redux';
 import {AnimatedFlatList} from '../components/others/favouriteScreenCard/AnimatedFlatList';
 import {useFocusEffect} from '@react-navigation/native';
 import {StatusBar} from 'react-native';
 import {getRandomColor} from '../utils/generateRandomColor';
+import {FavoritesMoviesContext} from '../hooks/StorageContext';
 
 // ==============================|| FavouritesScreen component ||============================== //
 
@@ -37,7 +37,7 @@ const FavouritesScreen: React.FC<FavouritesScreenProps> = () => {
   useFocusEffect(() => {
     StatusBar.setBackgroundColor(getRandomColor(), false);
   });
-  const favorites = useSelector((state) => state.movies.favorites);
+  const {favorites} = useContext(FavoritesMoviesContext);
   //-------- render component
   return (
     <SafeAreaWrapper>
