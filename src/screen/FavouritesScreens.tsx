@@ -14,6 +14,9 @@ import {
 } from '../constants/types/Tscreens';
 import {useSelector} from 'react-redux';
 import {AnimatedFlatList} from '../components/others/favouriteScreenCard/AnimatedFlatList';
+import {useFocusEffect} from '@react-navigation/native';
+import {StatusBar} from 'react-native';
+import {getRandomColor} from '../utils/generateRandomColor';
 
 // ==============================|| FavouritesScreen component ||============================== //
 
@@ -31,6 +34,9 @@ interface FavouritesScreenProps {
  * <FavouritesScreen/>
  */
 const FavouritesScreen: React.FC<FavouritesScreenProps> = () => {
+  useFocusEffect(() => {
+    StatusBar.setBackgroundColor(getRandomColor(), false);
+  });
   const favorites = useSelector((state) => state.movies.favorites);
   //-------- render component
   return (

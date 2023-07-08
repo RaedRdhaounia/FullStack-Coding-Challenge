@@ -27,6 +27,7 @@ import {getMovieById} from '../api/generator/methodes';
 import TypewriterText from 'react-native-typewriter';
 import {useFocusEffect} from '@react-navigation/native';
 import {StatusBar} from 'react-native';
+import {getRandomColor} from '../utils/generateRandomColor';
 
 // ==============================|| DetailsScreen component ||============================== //
 
@@ -56,7 +57,7 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
     id: itemId,
   });
   useFocusEffect(() => {
-    StatusBar.setBackgroundColor('blue', false);
+    StatusBar.setBackgroundColor(getRandomColor(), false);
   });
   useEffect(() => {
     async function handleMovie() {
