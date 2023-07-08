@@ -85,7 +85,6 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
     overview,
     release_date,
   } = movie;
-
   //-------- render component
   return (
     <SafeAreaWrapper>
@@ -121,7 +120,6 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
               <Text style={styles.descriptionTitle}>overview</Text>
               <Text style={styles.releaseDate}>{release_date}</Text>
             </View>
-
             <Text style={styles.overview}>{overview}</Text>
           </View>
         </View>
@@ -146,6 +144,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 200,
     resizeMode: 'stretch',
+    opacity: 0.6,
   },
   detailsContainer: {
     padding: 16,
@@ -173,7 +172,7 @@ const styles = StyleSheet.create({
   rating: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#0000FF',
+    color: '#999ED7',
   },
   overview: {
     fontSize: 16,
@@ -181,17 +180,17 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     padding: 16,
     borderWidth: 2,
-    borderColor: '#FFFFFF',
+    borderRadius: 26,
+    borderColor: '#999ED7',
   },
   descriptionBox: {
-    backgroundColor: 'white',
-    borderWidth: 2,
-    borderColor: '#FFFFFF',
+    opacity: 0.8,
+    borderColor: '#999ED7',
     padding: 16,
   },
   descriptionTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#FFFFFF',
+    color: '#999ED7',
   },
 });
