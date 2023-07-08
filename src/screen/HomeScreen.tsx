@@ -10,7 +10,7 @@ import {useNavigation} from '@react-navigation/native';
 
 //-- redux imports
 import {useDispatch, useSelector} from 'react-redux';
-import {fetchTopRatedMovies} from '../redux/favoriteMoviesListSlice'
+import {fetchTopRatedMovies} from '../redux/favoriteMoviesListSlice';
 //-- native components imports
 import {View} from 'react-native';
 
@@ -21,7 +21,6 @@ import {TextInputGen} from '../components/generator/';
 import {SafeAreaWrapper} from './SafeAreaWrapper';
 
 //--  component imports
-import SeeMore from '../components/others/SeeMore';
 import MovieList from '../components/others/homeScreenCard/Card';
 
 //-- types imports
@@ -29,6 +28,7 @@ import {
   HomeScreenNavigationProp,
   HomeScreenRouteProp,
 } from 'constants/types/Tscreens';
+import Splash from '../components/others/Splash';
 
 // ==============================|| HomeScreen component ||============================== //
 
@@ -39,7 +39,7 @@ interface HomeScreenProps {
 }
 
 /**
- * main screen get list of movies ( by Top rated ) with search input query
+ * main screen get list of movies ( by Top rated )
  * @name HomeScreen
  * @returns React.FC
  * @example
@@ -51,12 +51,22 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   // --- local state
   const [text, onChangeText] = React.useState('');
   const navigation = useNavigation();
-  //-------- function methods
   const movies = useSelector((state: any) => state.movies.topRated);
-  // --- handlechange text
-  const handleChangeText = (_text: string) => {
+  const loading = useSelector((state: any) => state.movies.loading);
+  //-------- function methods
+
+  /**
+   * @name handleChangeText
+   * @description this function used to collect the text change and update the local state text
+   * @argument {string} _text
+   * @returns {void}
+   * @example
+   * onChangeText={onChangeText}
+   */
+  const handleChangeText = (_text: string): void => {
     onChangeText(_text);
   };
+
   useEffect(() => {
     // Dispatch the action to fetch the first list of movies
     dispatch(fetchTopRatedMovies(1));
@@ -66,8 +76,15 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
     <SafeAreaWrapper>
       <View style={{paddingBottom: 100}}>
         <TextInputGen onChangeText={handleChangeText} value={text} />
-        <MovieList navigation={navigation} searchTerm={text} movies={movies} />
-        <SeeMore />
+        {loading === 'succeeded' ? (
+          <MovieList
+            navigation={navigation}
+            searchTerm={text}
+            movies={movies}
+          />
+        ) : (
+          <Splash />
+        )}
       </View>
     </SafeAreaWrapper>
   );
