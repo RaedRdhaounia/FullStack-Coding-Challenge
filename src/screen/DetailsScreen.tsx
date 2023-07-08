@@ -5,7 +5,7 @@
 import React, {useEffect, useState} from 'react';
 
 //-- native components imports
-import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
+import {Alert, FlatList, Image, StyleSheet, Text, View} from 'react-native';
 
 //-- screen styles component imports
 import {SafeAreaWrapper} from './SafeAreaWrapper';
@@ -68,7 +68,7 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
         )) as MovieDetails;
         setMovie(result);
       } catch (error) {
-        console.log('error', error);
+        Alert.alert('Oops', 'Somethings was wrong');
       } finally {
         setLoading(false);
       }
