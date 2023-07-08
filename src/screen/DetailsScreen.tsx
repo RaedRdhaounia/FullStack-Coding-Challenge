@@ -28,7 +28,7 @@ import TypewriterText from 'react-native-typewriter';
 import {useFocusEffect} from '@react-navigation/native';
 import {StatusBar} from 'react-native';
 import {getRandomColor} from '../utils/generateRandomColor';
-import {imageBaseUrl} from 'api/config';
+import {imageBaseUrl} from '../api/config';
 
 // ==============================|| DetailsScreen component ||============================== //
 

@@ -19,7 +19,7 @@ import {
 //-- prop types imports
 import {Movie} from '../../../constants/types/reduxState';
 import StarIcon from '../Star';
-import {imageBaseUrl} from 'api/config';
+import {imageBaseUrl} from '../../../api/config';
 
 // ==============================|| MovieList component ||============================== //
 

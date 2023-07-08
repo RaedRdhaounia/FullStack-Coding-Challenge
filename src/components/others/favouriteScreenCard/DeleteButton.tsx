@@ -19,7 +19,7 @@ import {FavoritesMoviesContext} from '../../../hooks/StorageContext';
  * @example
  * <DeleteFromFavoriteIcon/>
  */
-export function DeleteFromFavoriteIcon({itemId}: {itemId: number}) {
+export default function DeleteFromFavoriteIcon({itemId}: {itemId: number}) {
   const {removeFromFavorites} = useContext(FavoritesMoviesContext);
   //-------- navigation components config
   // --- dispatch params
