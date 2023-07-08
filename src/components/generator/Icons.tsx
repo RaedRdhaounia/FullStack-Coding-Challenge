@@ -5,7 +5,7 @@
 import React from 'react';
 
 //-- native components imports
-import {StyleSheet, View} from 'react-native';
+import {Alert, StyleSheet, ToastAndroid, View} from 'react-native';
 
 //-- react native navigation imports
 import {useNavigation, useRoute} from '@react-navigation/native';
@@ -77,18 +77,42 @@ export function AddToFavoriteIcon() {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.movies.favorites);
   // --- dispatch params
+  const showToast = () => {
+    ToastAndroid.showWithGravityAndOffset(
+      'Your movie added with success',
+      ToastAndroid.LONG,
+      ToastAndroid.TOP,
+      25,
+      50,
+    );
+  };
   async function addToFavorite() {
     const result = await getMovieById(1, itemId.toString());
-    dispatch(addToFavorites(result));
+    await dispatch(addToFavorites(result));
+    await showToast();
   }
   //-------- render component
   if (!favorites.some((fav: MovieDetails) => fav.id === itemId)) {
+    const addToFavoriteAlert = () => {
+      Alert.alert(
+        'Add a movie to your favorite list',
+        'Do you like to add this movie to your favorite list ?',
+        [
+          {
+            text: 'Cancel',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel',
+          },
+          {text: 'Confirm', onPress: async () => await addToFavorite()},
+        ],
+      );
+    };
     return (
       <MaterialCommunityIcons
         name="heart-plus"
         size={24}
         color="black"
-        onPress={addToFavorite}
+        onPress={addToFavoriteAlert}
       />
     );
   }
@@ -100,7 +124,7 @@ export function AddToFavoriteIcon() {
  * BackIcon : vector-icons
  *
  * @param props
- * @props color : string - backgroundcolor of the back button.
+ * @props color : string - backgroundColor of the back button.
  * @returns JSX.Element.
  * @example
  * <BackIcon color='red' />
