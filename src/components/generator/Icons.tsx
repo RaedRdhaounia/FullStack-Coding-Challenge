@@ -5,7 +5,7 @@
 import React from 'react';
 
 //-- native components imports
-import {Alert, StyleSheet, View} from 'react-native';
+import {Alert, StyleSheet, ToastAndroid, View} from 'react-native';
 
 //-- react native navigation imports
 import {useNavigation, useRoute} from '@react-navigation/native';
@@ -77,9 +77,19 @@ export function AddToFavoriteIcon() {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.movies.favorites);
   // --- dispatch params
+  const showToast = () => {
+    ToastAndroid.showWithGravityAndOffset(
+      'Your movie added with success',
+      ToastAndroid.LONG,
+      ToastAndroid.TOP,
+      25,
+      50,
+    );
+  };
   async function addToFavorite() {
     const result = await getMovieById(1, itemId.toString());
-    dispatch(addToFavorites(result));
+    await dispatch(addToFavorites(result));
+    await showToast();
   }
   //-------- render component
   if (!favorites.some((fav: MovieDetails) => fav.id === itemId)) {
