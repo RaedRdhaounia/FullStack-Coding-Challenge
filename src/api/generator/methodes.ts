@@ -1,7 +1,7 @@
-import {symb} from '../../constants/types/symboles';
+import {symb} from '../../constants/';
 import {getMovies} from './getMovies';
 
-const {related, byId} = symb;
+const {byId, related} = symb;
 
 export const gettopRatedMovies = async (page?: number) =>
   await getMovies(related, page);

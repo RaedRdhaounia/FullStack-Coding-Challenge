@@ -2,7 +2,7 @@
 
 // ==============================|| IMPORTS
 
-import React from 'react';
+import React, {useContext} from 'react';
 
 //-types
 import {StackHeaderOptions} from '@react-navigation/stack/lib/typescript/src/types';
@@ -17,6 +17,7 @@ import {
   FavoriteIcon,
 } from '../components/generator';
 import {optionT} from '../constants';
+import {FavoritesMoviesContext} from './StorageContext';
 
 // ==============================|| useScreenOptions function ||============================== //
 
@@ -33,6 +34,8 @@ import {optionT} from '../constants';
  * />
  */
 export default function useScreenOptions(): optionT {
+  const {addToFavorites, favorites} = useContext(FavoritesMoviesContext);
+
   //-------- based header bar styles component
   const header = {
     headerTitleAlign: 'center',
@@ -52,7 +55,12 @@ export default function useScreenOptions(): optionT {
     details: {
       ...header,
       headerTitle: () => null,
-      headerRight: () => <AddToFavouriteIcon />,
+      headerRight: () => (
+        <AddToFavouriteIcon
+          addToFavorites={addToFavorites}
+          favorites={favorites}
+        />
+      ),
       headerLeft: () => <BackIcon color="white" />,
     },
     favourites: {

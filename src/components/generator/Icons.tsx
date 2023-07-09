@@ -2,7 +2,7 @@
 
 // ==============================|| IMPORTS
 
-import React, {useContext} from 'react';
+import React from 'react';
 
 //-- native components imports
 import {Alert, StyleSheet, ToastAndroid, View} from 'react-native';
@@ -21,7 +21,6 @@ import {
   MovieDetails,
 } from 'constants/';
 import {getMovieById} from '../../api/generator/methodes';
-import {FavoritesMoviesContext} from '../../hooks/';
 
 //-- local props types
 type BackIconP = {
@@ -68,8 +67,11 @@ export function FavoriteIcon() {
  * <AddToFavoriteIcon/>
  */
 
-export function AddToFavoriteIcon() {
-  const {addToFavorites, favorites} = useContext(FavoritesMoviesContext);
+export function AddToFavoriteIcon(props: {
+  addToFavorites: (movie: Movie) => void;
+  favorites: Movie[];
+}) {
+  const {addToFavorites, favorites} = props;
   //-------- navigation components config
   // --- instance route methods
   const route = useRoute<DetailsScreenRouteProp>();

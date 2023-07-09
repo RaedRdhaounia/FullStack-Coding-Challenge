@@ -43,7 +43,7 @@ interface RenderCardP {
  * @property using animated component we crete an animated FlatList based on opacity on scrolling
  * @returns React.FC
  * @example
- * <MovieList navigation={navigation} movies={movies} searchTerm={>searchTerm} />
+ * <MovieList navigation={navigation} movies={movies} searchTerm={searchTerm} />
  */
 const MovieList: React.FC<MovieListP> = ({movies, searchTerm, navigation}) => {
   const scrollY = useRef(new Animated.Value(0)).current;

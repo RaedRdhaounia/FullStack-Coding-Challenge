@@ -9,7 +9,7 @@ import Constants from 'expo-constants';
 import axios, {AxiosInstance} from 'axios';
 
 // -- symboles
-import {symb} from '../constants/types/symboles';
+import {symb} from '../constants/';
 
 //-------- destraction variables envirement needs (token and based url)
 const baseURL: string = Constants.manifest?.extra?.api?.baseURL;
