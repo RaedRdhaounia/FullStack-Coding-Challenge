@@ -20,6 +20,8 @@ import {
   Movie,
   MovieDetails,
 } from 'constants/';
+
+//-- api Promise import
 import {getMovieById} from '../../api/generator/methodes';
 
 //-- local props types
@@ -155,6 +157,9 @@ export function BackIcon(props: BackIconP) {
     </View>
   );
 }
+// ==============================|| styles
+
+// ==============================|| styles
 
 const styles = StyleSheet.create({
   iconBack: {
