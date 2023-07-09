@@ -10,6 +10,7 @@ import rootReducer from './reducers';
 
 // ==============================|| create store for the app ||============================== //
 
+//-- combine Reducers and located to the store
 const store = configureStore({
   reducer: rootReducer,
 });
