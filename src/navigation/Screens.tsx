@@ -23,7 +23,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 // ==============================|| stack screen component||============================== //
 /**
  * Screens component that configures the stack navigator and screen options.
- * It renders the Home, Details, and Favourites screens.
+ * It renders the Home, Details, and Favorites screens.
  * @name: Screens
  * @returns JSX.Element
  * @example
@@ -34,10 +34,10 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
  */
 
 export default function Screens(): JSX.Element {
-  //-------- screend header options
+  //-------- screens header options
   //-- instance useScreenOptions : getter options
   const screenOptions = useScreenOptions();
-  // --- destraction options screens
+  // --- destruction options screens
   const {details, favourites, home, stack} = screenOptions;
 
   //-------- render component
