@@ -71,6 +71,7 @@ const RenderCard = ({
 };
 
 export default RenderCard;
+
 // ==============================|| styles
 const styles = StyleSheet.create({
   header: {
