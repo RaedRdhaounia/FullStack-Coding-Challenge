@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 // ==============================|| HomeScreen module ||============================== //
 
 // ==============================|| IMPORTS
@@ -10,27 +9,26 @@ import {useFocusEffect, useNavigation} from '@react-navigation/native';
 
 //-- redux imports
 import {useDispatch, useSelector} from 'react-redux';
-import {fetchTopRatedMovies} from '../redux/favoriteMoviesListSlice';
+import {fetchTopRatedMovies} from '../utils';
+
 //-- native components imports
-import {StatusBar, View} from 'react-native';
+import {StatusBar, StyleSheet, View} from 'react-native';
 
 //-- components imports
 import {TextInputGen} from '../components/generator/';
+import {Splash} from '../components/others/';
+import {MovieList} from '../components/others/';
 
 //-- screen styles component imports
 import {SafeAreaWrapper} from './SafeAreaWrapper';
 
-//--  component imports
-import {MovieList} from '../components/others/';
+//--  util function imports
+import {getRandomColor} from '../utils/';
 
 //-- types imports
 import {HomeScreenProps} from 'constants/';
-import {Splash} from '../components/others/';
-import {getRandomColor} from '../utils/';
 
 // ==============================|| HomeScreen component ||============================== //
-
-//-------- local component interface
 
 /**
  * main screen get list of movies ( by Top rated )
@@ -70,7 +68,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   //-------- render component
   return (
     <SafeAreaWrapper>
-      <View style={{paddingBottom: 100}}>
+      <View style={styles.container}>
         <TextInputGen onChangeText={handleChangeText} value={text} />
         {loading === 'succeeded' ? (
           <MovieList
@@ -87,3 +85,9 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
 };
 
 export default HomeScreen;
+
+// ==============================|| styles
+
+const styles = StyleSheet.create({
+  container: {paddingBottom: 100},
+});

@@ -1,3 +1,7 @@
+// ==============================|| TextInputGen module ||============================== //
+
+// ==============================|| IMPORTS
+
 import React from 'react';
 import {View, TextInput, StyleSheet} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
@@ -7,6 +11,8 @@ interface TextInputGenP {
   onChangeText: (text: string) => void;
 }
 
+// ==============================|| TextInputGen component ||============================== //
+
 const TextInputGen: React.FC<TextInputGenP> = ({value, onChangeText}) => {
   return (
     <View style={styles.container}>
@@ -14,7 +20,7 @@ const TextInputGen: React.FC<TextInputGenP> = ({value, onChangeText}) => {
         <Ionicons name="search-outline" size={24} color="black" />
       </View>
       <TextInput
-        placeholder="serach for a movie ..."
+        placeholder="search for a movie ..."
         value={value}
         onChangeText={onChangeText}
         style={styles.input}
@@ -22,6 +28,8 @@ const TextInputGen: React.FC<TextInputGenP> = ({value, onChangeText}) => {
     </View>
   );
 };
+
+// ==============================|| styles
 
 const styles = StyleSheet.create({
   container: {

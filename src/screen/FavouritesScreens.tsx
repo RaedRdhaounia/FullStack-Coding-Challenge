@@ -4,29 +4,37 @@
 
 import React, {useContext} from 'react';
 
+//-- hooks imports
+import {FavoritesMoviesContext} from '../hooks/';
+
+//-- native components imports
+import {StatusBar} from 'react-native';
+
+//-- native hooks imports
+import {useFocusEffect} from '@react-navigation/native';
+
+//-- animated components imports
+import {AnimatedFlatList} from '../components/others/';
 //-- screen styles component imports
 import {SafeAreaWrapper} from './SafeAreaWrapper';
 
 //-- types imports
 import {FavouritesScreenProps} from '../constants/';
-import {AnimatedFlatList} from '../components/others/';
-import {useFocusEffect} from '@react-navigation/native';
-import {StatusBar} from 'react-native';
+
+//--  util function imports
 import {getRandomColor} from '../utils/';
-import {FavoritesMoviesContext} from '../hooks/';
 
 // ==============================|| FavouritesScreen component ||============================== //
 
-//-------- locat component interface
-
 /**
- * this component will show the added list of movies to the favourite list
+ * this component will show the added list of movies to the favorite list
  * @name FavouritesScreen
  * @returns React.FC
  * @example
  * <FavouritesScreen/>
  */
 const FavouritesScreen: React.FC<FavouritesScreenProps> = () => {
+  //--------change status bar color on navigator to screen
   useFocusEffect(() => {
     StatusBar.setBackgroundColor(getRandomColor(), false);
   });

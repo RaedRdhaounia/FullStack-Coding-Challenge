@@ -5,30 +5,45 @@
 import React, {useEffect, useState} from 'react';
 
 //-- native components imports
-import {Alert, FlatList, Image, StyleSheet, Text, View} from 'react-native';
+import {
+  Alert,
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  StatusBar,
+} from 'react-native';
+
+//-- import navigation
+import {useFocusEffect} from '@react-navigation/native';
 
 //-- screen styles component imports
 import {SafeAreaWrapper} from './SafeAreaWrapper';
 
 //-- import components
 import {Badge} from '../components/generator/';
-import {AntDesign} from '@expo/vector-icons';
 
-//-- types imports
-import {DetailsScreenProps, MovieDetails} from 'constants/';
+//-- icon imports family AntDesign
+import {AntDesign} from '@expo/vector-icons';
 
 //-- get movies details from APi
 import {getMovieById} from '../api/generator/methodes';
 
+//-- text styling package import
 import TypewriterText from 'react-native-typewriter';
-import {useFocusEffect} from '@react-navigation/native';
-import {StatusBar} from 'react-native';
+
+//--  util function imports
 import {getRandomColor} from '../utils';
+
+//--  basedUrl For images source imports
 import {imageBaseUrl} from '../api/config';
 
-// ==============================|| DetailsScreen component ||============================== //
+//-- types imports
+import {DetailsScreenProps, MovieDetails} from 'constants/';
+import {Splash} from '../components/others';
 
-//-------- local component interface
+// ==============================|| DetailsScreen component ||============================== //
 
 /**
  * component to see a single movie details
@@ -38,7 +53,7 @@ import {imageBaseUrl} from '../api/config';
  * <DetailsScreen/>
  */
 const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
-  // --- destruction params
+  // --- destruction params (movie id)
   const {itemId} = route.params;
 
   //-------- local states
@@ -46,9 +61,13 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
   const [movie, setMovie] = useState<MovieDetails>({
     id: itemId,
   });
+
+  //-- changes status bar when get navigation to this screen
   useFocusEffect(() => {
     StatusBar.setBackgroundColor(getRandomColor(), false);
   });
+
+  //-- search for movie details when get changed id from params
   useEffect(() => {
     async function handleMovie() {
       try {
@@ -65,10 +84,12 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
     }
     handleMovie();
   }, [itemId]);
+
+  //-- case of loading display splash screen
   if (loading) {
     return (
       <SafeAreaWrapper>
-        <Text>loading</Text>
+        <Splash />
       </SafeAreaWrapper>
     );
   }
@@ -127,6 +148,9 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
 };
 
 export default DetailsScreen;
+
+// ==============================|| styles
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

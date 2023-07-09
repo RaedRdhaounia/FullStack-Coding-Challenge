@@ -11,14 +11,15 @@ import {
   StatusBar,
   StyleSheet,
 } from 'react-native';
-
+//-- import Background image
 import backgroundImage from '../assets/images/background.jpg';
 //-- react native navigation imports
 import {useHeaderHeight} from '@react-navigation/elements';
 
 // ==============================|| SafeAreaWrapper component ||============================== //
+
 /**
- * As the header bar style transparent we need to made a paading top for each screen as separator height --
+ * As the header bar style transparent we need to made a padding top for each screen as separator height --
  * To manages global screens styles
  * @name: SafeAreaWrapper
  * @prop {children} : React.ReactElement
@@ -51,6 +52,8 @@ export const SafeAreaWrapper = ({
     </SafeAreaView>
   );
 };
+
+// ==============================|| styles
 
 const styles = StyleSheet.create({
   SafeAreaView: {flex: 1},
