@@ -14,8 +14,6 @@ import {getRandomColor} from '../../utils/';
 // ==============================|| Badge component ||============================== //
 
 const Badge = ({name}: Genre) => {
-  //-------- random back background color function
-
   //-------- render component
   return (
     <View style={{...styles.container, backgroundColor: getRandomColor()}}>
@@ -25,6 +23,8 @@ const Badge = ({name}: Genre) => {
 };
 
 export default Badge;
+
+// ==============================|| styles
 
 const styles = StyleSheet.create({
   container: {

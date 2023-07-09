@@ -11,13 +11,17 @@ import {Provider} from 'react-redux';
 
 //-- store imports
 import store from './src/redux/store';
+
+//-- import Provider
 import {FavoritesProvider} from './src/hooks/';
 
 // ==============================|| App component ||============================== //
 
 /**
- * main component for the our app
+ * as the conception of the redux-persist we used a context power by AsyncStorage to save data
  * @name App
+ * @provier FavoritesProvider
+ * @stateManagment Provider {redux}
  * @returns {JSX.Element}
  * @example
  * registerRootComponent(App);

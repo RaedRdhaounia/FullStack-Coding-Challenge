@@ -33,6 +33,8 @@ const StarIcon = (): JSX.Element => {
 };
 export default StarIcon;
 
+// ==============================|| styles
+
 const styles = StyleSheet.create({
   iconStar: {
     marginRight: 4,
