@@ -53,6 +53,8 @@ export const SafeAreaWrapper = ({
   );
 };
 
+// ==============================|| styles
+
 const styles = StyleSheet.create({
   SafeAreaView: {flex: 1},
   backgroundImage: {
