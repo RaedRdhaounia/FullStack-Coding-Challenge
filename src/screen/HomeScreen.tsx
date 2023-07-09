@@ -24,17 +24,13 @@ import {SafeAreaWrapper} from './SafeAreaWrapper';
 import {MovieList} from '../components/others/';
 
 //-- types imports
-import {HomeScreenNavigationProp, HomeScreenRouteProp} from 'constants/';
+import {HomeScreenProps} from 'constants/';
 import {Splash} from '../components/others/';
 import {getRandomColor} from '../utils/';
 
 // ==============================|| HomeScreen component ||============================== //
 
 //-------- local component interface
-interface HomeScreenProps {
-  navigation: HomeScreenNavigationProp;
-  route: HomeScreenRouteProp;
-}
 
 /**
  * main screen get list of movies ( by Top rated )

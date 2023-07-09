@@ -1,4 +1,3 @@
-export const related = Symbol('topRelated');
-export const byId = Symbol('byID');
-export const symb = {related, byId};
+import {byId, related} from '../';
+
 export type endPointT = typeof byId | typeof related | undefined;

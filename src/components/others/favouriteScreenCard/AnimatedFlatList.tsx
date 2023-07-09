@@ -1,5 +1,6 @@
-import {MovieDetails} from '../../../constants/';
 import React, {useEffect, useRef} from 'react';
+
+import {MovieDetails} from '../../../constants/';
 import {Animated, StyleSheet} from 'react-native';
 import RenderCard from './RenderdCard';
 import {useNavigation} from '@react-navigation/native';

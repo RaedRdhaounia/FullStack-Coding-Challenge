@@ -10,13 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 //-- import FavoriteMovie type
 import {Movie} from '../constants/';
 import {Alert} from 'react-native';
-
-// Define the shape of the context value
-type FavoritesMovieContextValue = {
-  favorites: Movie[];
-  addToFavorites: (movie: Movie) => void;
-  removeFromFavorites: (movieId: number) => void;
-};
+import {FavoritesMovieContextValue} from '../constants/';
 
 // ==============================|| Favorite Movies Context ||============================== //
 

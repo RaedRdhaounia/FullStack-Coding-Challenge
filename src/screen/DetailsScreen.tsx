@@ -15,11 +15,7 @@ import {Badge} from '../components/generator/';
 import {AntDesign} from '@expo/vector-icons';
 
 //-- types imports
-import {
-  DetailsScreenNavigationProp,
-  DetailsScreenRouteProp,
-  MovieDetails,
-} from 'constants/';
+import {DetailsScreenProps, MovieDetails} from 'constants/';
 
 //-- get movies details from APi
 import {getMovieById} from '../api/generator/methodes';
@@ -33,10 +29,6 @@ import {imageBaseUrl} from '../api/config';
 // ==============================|| DetailsScreen component ||============================== //
 
 //-------- local component interface
-interface DetailsScreenProps {
-  navigation: DetailsScreenNavigationProp;
-  route: DetailsScreenRouteProp;
-}
 
 /**
  * component to see a single movie details

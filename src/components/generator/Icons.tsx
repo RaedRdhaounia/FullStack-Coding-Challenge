@@ -17,10 +17,11 @@ import {Ionicons, MaterialCommunityIcons} from '@expo/vector-icons';
 import {
   DetailsScreenRouteProp,
   HomeScreenNavigationProp,
-} from 'constants/types/Tscreens';
+  Movie,
+  MovieDetails,
+} from 'constants/';
 import {getMovieById} from '../../api/generator/methodes';
-import {Movie, MovieDetails} from '../../constants/types/reduxState';
-import {FavoritesMoviesContext} from '../../hooks/StorageContext';
+import {FavoritesMoviesContext} from '../../hooks/';
 
 //-- local props types
 type BackIconP = {
