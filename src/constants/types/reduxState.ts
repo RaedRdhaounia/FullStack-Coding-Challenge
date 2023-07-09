@@ -19,3 +19,12 @@ export interface MovieDetails {
   duration?: number;
   overview?: string;
 }
+
+export interface MoviesState {
+  favorites: Movie[];
+  topRated: Movie[];
+  currentPage: number;
+  totalPages: number;
+  loading: 'idle' | 'pending' | 'succeeded' | 'failed';
+  error: string | null;
+}

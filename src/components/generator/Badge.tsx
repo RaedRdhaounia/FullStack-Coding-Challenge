@@ -8,8 +8,8 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
 //-- types imports
-import {Genre} from '../../constants/types/reduxState';
-import {getRandomColor} from '../../utils/generateRandomColor';
+import {Genre} from '../../constants/';
+import {getRandomColor} from '../../utils/';
 
 // ==============================|| Badge component ||============================== //
 

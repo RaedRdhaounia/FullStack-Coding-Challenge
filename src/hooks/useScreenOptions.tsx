@@ -4,8 +4,6 @@
 
 import React from 'react';
 
-//-- native components imports
-import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
 //-types
 import {StackHeaderOptions} from '@react-navigation/stack/lib/typescript/src/types';
 
@@ -18,16 +16,9 @@ import {
   BackIcon,
   FavoriteIcon,
 } from '../components/generator';
+import {optionT} from '../constants';
 
 // ==============================|| useScreenOptions function ||============================== //
-
-//-------- locat options stack type
-type optionT = {
-  stack: NativeStackNavigationOptions;
-  home: NativeStackNavigationOptions;
-  details: NativeStackNavigationOptions;
-  favourites: NativeStackNavigationOptions;
-};
 
 /**
  * @description we use this function for managment options header bar for screens stack

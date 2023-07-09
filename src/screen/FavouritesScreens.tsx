@@ -8,23 +8,16 @@ import React, {useContext} from 'react';
 import {SafeAreaWrapper} from './SafeAreaWrapper';
 
 //-- types imports
-import {
-  FavouritesScreenNavigationProp,
-  FavouritesScreenRouteProp,
-} from '../constants/types/Tscreens';
-import {AnimatedFlatList} from '../components/others/favouriteScreenCard/AnimatedFlatList';
+import {FavouritesScreenProps} from '../constants/';
+import {AnimatedFlatList} from '../components/others/';
 import {useFocusEffect} from '@react-navigation/native';
 import {StatusBar} from 'react-native';
-import {getRandomColor} from '../utils/generateRandomColor';
-import {FavoritesMoviesContext} from '../hooks/StorageContext';
+import {getRandomColor} from '../utils/';
+import {FavoritesMoviesContext} from '../hooks/';
 
 // ==============================|| FavouritesScreen component ||============================== //
 
 //-------- locat component interface
-interface FavouritesScreenProps {
-  navigation: FavouritesScreenNavigationProp;
-  route: FavouritesScreenRouteProp;
-}
 
 /**
  * this component will show the added list of movies to the favourite list

@@ -1,10 +1,11 @@
-import {MovieDetails} from '../../../constants/types/reduxState';
 import React, {useEffect, useRef} from 'react';
+
+import {MovieDetails} from '../../../constants/';
 import {Animated, StyleSheet} from 'react-native';
-import {RenderCard} from './RenderdCard';
+import RenderCard from './RenderdCard';
 import {useNavigation} from '@react-navigation/native';
 
-export const AnimatedFlatList = ({data}: {data: MovieDetails[]}) => {
+const AnimatedFlatList = ({data}: {data: MovieDetails[]}) => {
   const navigation = useNavigation();
 
   const animatedValues = useRef(data.map(() => new Animated.Value(0))).current;
@@ -45,6 +46,7 @@ export const AnimatedFlatList = ({data}: {data: MovieDetails[]}) => {
   );
 };
 
+export default AnimatedFlatList;
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,

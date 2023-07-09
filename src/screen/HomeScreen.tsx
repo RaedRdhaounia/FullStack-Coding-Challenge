@@ -21,23 +21,16 @@ import {TextInputGen} from '../components/generator/';
 import {SafeAreaWrapper} from './SafeAreaWrapper';
 
 //--  component imports
-import MovieList from '../components/others/homeScreenCard/Card';
+import {MovieList} from '../components/others/';
 
 //-- types imports
-import {
-  HomeScreenNavigationProp,
-  HomeScreenRouteProp,
-} from 'constants/types/Tscreens';
-import Splash from '../components/others/Splash';
-import {getRandomColor} from '../utils/generateRandomColor';
+import {HomeScreenProps} from 'constants/';
+import {Splash} from '../components/others/';
+import {getRandomColor} from '../utils/';
 
 // ==============================|| HomeScreen component ||============================== //
 
 //-------- local component interface
-interface HomeScreenProps {
-  navigation: HomeScreenNavigationProp;
-  route: HomeScreenRouteProp;
-}
 
 /**
  * main screen get list of movies ( by Top rated )

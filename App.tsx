@@ -11,7 +11,7 @@ import {Provider} from 'react-redux';
 
 //-- store imports
 import store from './src/redux/store';
-import {FavoritesProvider} from './src/hooks/StorageContext';
+import {FavoritesProvider} from './src/hooks/';
 
 // ==============================|| App component ||============================== //
 

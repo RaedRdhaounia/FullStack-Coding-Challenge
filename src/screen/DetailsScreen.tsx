@@ -5,21 +5,17 @@
 import React, {useEffect, useState} from 'react';
 
 //-- native components imports
-import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
+import {Alert, FlatList, Image, StyleSheet, Text, View} from 'react-native';
 
 //-- screen styles component imports
 import {SafeAreaWrapper} from './SafeAreaWrapper';
 
 //-- import components
-import Badge from '../components/generator/Badge';
+import {Badge} from '../components/generator/';
 import {AntDesign} from '@expo/vector-icons';
 
 //-- types imports
-import {
-  DetailsScreenNavigationProp,
-  DetailsScreenRouteProp,
-} from 'constants/types/Tscreens';
-import {MovieDetails} from '../constants/types/reduxState';
+import {DetailsScreenProps, MovieDetails} from 'constants/';
 
 //-- get movies details from APi
 import {getMovieById} from '../api/generator/methodes';
@@ -27,18 +23,12 @@ import {getMovieById} from '../api/generator/methodes';
 import TypewriterText from 'react-native-typewriter';
 import {useFocusEffect} from '@react-navigation/native';
 import {StatusBar} from 'react-native';
-import {getRandomColor} from '../utils/generateRandomColor';
+import {getRandomColor} from '../utils';
+import {imageBaseUrl} from '../api/config';
 
 // ==============================|| DetailsScreen component ||============================== //
 
-//-------- based url image
-const imageBaseUrl = 'https://image.tmdb.org/t/p/original';
-
 //-------- local component interface
-interface DetailsScreenProps {
-  navigation: DetailsScreenNavigationProp;
-  route: DetailsScreenRouteProp;
-}
 
 /**
  * component to see a single movie details
@@ -68,7 +58,7 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
         )) as MovieDetails;
         setMovie(result);
       } catch (error) {
-        console.log('error', error);
+        Alert.alert('Oops', 'Somethings was wrong');
       } finally {
         setLoading(false);
       }

@@ -14,27 +14,10 @@ export const fetchTopRatedMovies = createAsyncThunk(
   },
 );
 //-- Movie model add as interface
-import {Movie} from '../constants/types/reduxState';
+import {Movie} from '../constants/';
 
+import {initialState} from '../constants';
 //-------- locale state interface
-interface MoviesState {
-  favorites: Movie[];
-  topRated: Movie[];
-  currentPage: number;
-  totalPages: number;
-  loading: 'idle' | 'pending' | 'succeeded' | 'failed';
-  error: string | null;
-}
-
-//-------- initialized state
-const initialState: MoviesState = {
-  favorites: [],
-  topRated: [],
-  currentPage: 1,
-  totalPages: 0,
-  loading: 'idle',
-  error: null,
-};
 
 // ==============================|| create new slice for movies ||============================== //
 
