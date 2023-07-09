@@ -9,7 +9,7 @@ import {useFocusEffect, useNavigation} from '@react-navigation/native';
 
 //-- redux imports
 import {useDispatch, useSelector} from 'react-redux';
-import {fetchTopRatedMovies} from '../redux/favoriteMoviesListSlice';
+import {fetchTopRatedMovies} from '../utils';
 
 //-- native components imports
 import {StatusBar, StyleSheet, View} from 'react-native';
