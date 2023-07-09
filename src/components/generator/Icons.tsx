@@ -159,8 +159,6 @@ export function BackIcon(props: BackIconP) {
 }
 // ==============================|| styles
 
-// ==============================|| styles
-
 const styles = StyleSheet.create({
   iconBack: {
     padding: 5,
