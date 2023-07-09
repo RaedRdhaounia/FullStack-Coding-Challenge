@@ -1,4 +1,9 @@
+// ==============================|| RenderCard module ||============================== //
+
+// ==============================|| IMPORTS
 import React from 'react';
+
+//-- native components imports
 import {
   Animated,
   Dimensions,
@@ -8,14 +13,33 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+
+//--created components imports
 import StarIcon from '../Star';
-import {MovieDetails} from '../../../constants/';
 import DeleteFromFavoriteIcon from './DeleteButton';
+
+//-- ImageURL imports
 import {imageBaseUrl} from '../../../api/config';
 
-const windowWidth = Dimensions.get('window').width;
-const numColumns = 2;
-const itemWidth = windowWidth / numColumns;
+//-- prop types imports
+import {MovieDetails} from '../../../constants/';
+
+// ==============================|| RenderCard component ||============================== //
+
+//-- column number and card with init
+const windowWidth = Dimensions.get('window').width; // screen width
+const numColumns = 2; // number of card per colum
+const itemWidth = windowWidth / numColumns; // card with
+
+/**
+ *
+ * @name RenderCard
+ * @description this components is created to execute a movie animated card
+ * @property using animated component we crete an animated card component that used for favorite list items wi upper size one by ne based index
+ * @returns React.FC
+ * @example
+ * <RenderCard navigation={navigation} item={item} animatedValue={animatedValue} />
+ */
 const RenderCard = ({
   item,
   navigation,
@@ -25,10 +49,12 @@ const RenderCard = ({
   navigation: any;
   animatedValue: Animated.Value;
 }) => {
+  //-- navigation function declare method
   function handleNavigate() {
     navigation.navigate('Details', {itemId: item.id});
   }
 
+  //-- based on height and width we create a interpolation
   const animatedStyle = {
     opacity: animatedValue.interpolate({
       inputRange: [0, 0.7],
@@ -43,6 +69,8 @@ const RenderCard = ({
       },
     ],
   };
+
+  //-- render Animated card
   return (
     <Animated.View
       style={[styles.cardContainer, {maxWidth: itemWidth - 32}, animatedStyle]}>
